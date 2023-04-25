@@ -3,6 +3,12 @@
     <head>
         <meta charset="UTF-8" />
         <title>HTML</title>
+        <style>
+            /* CSS */
+            table, td, th {
+                border: 1px solid darkgray;
+            }
+        </style>
     </head>
     <body>
         <h1>HTML Table</h1>
@@ -87,6 +93,45 @@
         </table>
         
         <hr />
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>이름</th>
+                    <th colspan="2">전화번호</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>홍길동</td>
+                    <td>010-1234-5678</td>
+                    <td>02-1234-5678</td>
+                </tr>
+                <tr>
+                    <td>아이티윌</td>
+                    <td>010-0000-0000</td>
+                    <td>02-0000-0000</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <hr />
+        
+        <table>
+            <tbody>
+                <tr>
+                    <th>이름</th>
+                    <td>홍길동</td>
+                </tr>
+                <tr>
+                    <th rowspan="2">전화번호</th>
+                    <td>010-1234-5678</td>
+                </tr>
+                <tr>
+                    <td>02-1234-5678</td>
+                </tr>
+            </tbody>
+        </table>
         
     </body>
 </html>
