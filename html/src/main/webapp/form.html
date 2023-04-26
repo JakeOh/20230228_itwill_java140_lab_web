@@ -78,7 +78,21 @@
             <label for="cb3">인천</label>
             <br />
             
-            <input type="submit" />
+            <!-- 콤보박스(combo box), 목록 상자(drop-down list), 스피너(spinner) -->
+            <select name="domain">
+                <option value="naver.com">네이버</option>
+                <option value="kakao.com">카카오</option>
+                <option value="google.com">구글</option>
+                <option value="coupang.com">쿠팡</option>
+            </select>
+            <br />
+            
+            <!-- 여러 줄 입력 상자 -->
+            <textarea rows="5" cols="40" name="memo"></textarea>
+            <br />
+            
+            <input type="reset" /> <!-- 기존 입력 값들을 모두 지움. -->
+            <input type="submit" /> <!-- 입력 값들을 서버로 전송. -->
         </form>
         
     </body>
