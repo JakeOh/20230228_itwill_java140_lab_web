@@ -37,10 +37,48 @@
         <hr />
         
         <h2>POST 방식 전송</h2>
+        
         <form method="post" action="result.html">
             <input type="text" name="id" placeholder="아이디" />
             <input type="password" name="pwd" placeholder="비밀번호" />
             <input type="submit" value="로그인" />
+        </form>
+        
+        <hr />
+        
+        <h2>여러가지 입력 타입들</h2>
+        
+        <form action="result.html"> <!-- method 속성 값을 설정하지 않으면 기본값은 GET. -->
+            <input type="text" name="userid" placeholder="아이디" />
+            <br />
+            <input type="password" name="pwd" placeholder="비밀번호" />
+            <br />
+            <input type="email" name="email" placeholder="email@abc.com" />
+            <br />
+            <input type="number" name="age" placeholder="나이" />
+            <br />
+            <input type="date" name="birthday" />
+            <br />
+            <input type="datetime-local" name="createdTime" />
+            <br />
+            
+            <!-- 라디오버튼 -->
+            <input type="radio" name="receive" value="T" id="rb1" />
+            <label for="rb1">수신 동의</label>
+            <input type="radio" name="receive" value="F" checked id="rb2" />
+            <label for="rb2">수신 거부</label>
+            <br />
+            
+            <!-- 체크박스 -->
+            <input type="checkbox" name="city" value="1" id="cb1" />
+            <label for="cb1">서울</label>
+            <input type="checkbox" name="city" value="2" id="cb2" />
+            <label for="cb2">경기</label>
+            <input type="checkbox" name="city" value="3" id="cb3" />
+            <label for="cb3">인천</label>
+            <br />
+            
+            <input type="submit" />
         </form>
         
     </body>
