@@ -6,13 +6,41 @@
     </head>
     <body>
         <h1>HTML Form</h1>
+        <!--  
+        브라우저(클라이언트)에서 사용자의 입력을 받아서, 입력 내용을 서버로 전송하는 방법:
+        1. <form> 태그 안에서 필요한 입력 요소(input element)들을 작성.
+        2. <form> 태그의 submit 버튼을 클릭하면 입력 요소들에 입력한 내용들이 서버로 전송.
+        
+        전송 방식(method 속성):
+        1. GET 방식: form의 기본 전송 방식. method 속성을 설정하지 않으면 기본은 GET 방식.
+           - 클라이언트가 보내는 데이터가 요청 주소의 질의 문자열(query string)에 포함되는 방식.
+           - 요청 주소(request URL)의 형식:
+             프로토콜://서버주소[:포트번호]/경로?질의문자열
+             (예) http://localhost:8081/html/result.html?q=value
+           - 요청 주소에서 경로와 질의 문자열은 ?로 구분.
+           - 질의 문자열의 형식: param1=value1&param2=value2
+           - 질의 문자열에서 요청 파라미터들은 &로 구분.
+        2. POST 방식: 클라이언트가 보내는 데이터가 요청 주소에 노출되지 않고,
+        요청 패킷의 몸체(body)에 포함되서 전송되는 방식.
+           - form의 기본 전송 방식이 아니기 때문에, method 속성 값을 "post"라고 설정.
+           - GET 방식은 요청 파라미터들을 URL에 포함시키는 방식이기 때문에, 전송되는 데이터의 크기가 제한이 있음.
+           - POST 방식은 전송 데이터의 크기 제한이 없음.
+        -->
         
         <h2>GET 방식 전송</h2>
         
         <form method="get" action="result.html">
-            <input type="text" name="id" />
-            <input type="password" name="pwd" />
-            <input type="submit" />
+            <input type="text" name="q" />
+            <input type="submit" value="검색" />
+        </form>
+        
+        <hr />
+        
+        <h2>POST 방식 전송</h2>
+        <form method="post" action="result.html">
+            <input type="text" name="id" placeholder="아이디" />
+            <input type="password" name="pwd" placeholder="비밀번호" />
+            <input type="submit" value="로그인" />
         </form>
         
     </body>
