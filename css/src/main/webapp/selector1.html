@@ -22,6 +22,21 @@
                 color: white;
             }
             
+            /* 3. id selector */
+            #id-1 {
+                color: lightgray;
+            }
+            
+            /* p 태그들 중에서 id 값이 "id-1"인 요소 */
+            p#id-1 {
+                color: red;
+            }
+            
+            /* div 태그들 중에서 class 이름이 "color-white" 인 요소를 찾아서 
+            글자색을 lime으로 변경 */
+            div.color-white {
+                color: lime;
+            }
             
         </style>
     </head>
@@ -31,11 +46,11 @@
         
         <div class="color-white">Division 1</div>
         <div class="color-white">Division 2</div>
-        <div>Division 3</div>
+        <div id="id-1">Division 3</div>
         
         <p class="color-white">Paragraph 1</p>
         <p class="color-white">Paragraph 2</p>
-        <p>Paragraph 3</p>
+        <p id="id-1">Paragraph 3</p>
         
         <!-- CSS 기본 문법:
           selector { property: value; ... }
