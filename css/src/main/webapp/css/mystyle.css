@@ -1,0 +1,7 @@
+@charset "UTF-8"; /* CSS 파일의 인코딩 설정 */
+
+div {
+    border: 2px solid white; /* 테두리선의 두께, 종류, 색깔 */
+    margin: 16px; /* HTML 요소의 테두리 바깥 여백 */
+    padding: 16px; /* HTML 요소의 테두리 안쪽 여백 */
+}

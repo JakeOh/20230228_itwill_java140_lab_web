@@ -3,15 +3,50 @@
     <head>
         <meta charset="UTF-8" />
         <title>CSS</title>
+        
+        <!-- 1. 외부(external) CSS -->
+        <link rel="stylesheet" href="css/mystyle.css" />
+        
+        <!-- 2. 내부(internal) CSS -->
         <style>
             /* CSS 주석 */
             body {
                 background-color: lightgray;
             }
             
+            p {
+                border: 4px dashed crimson;
+                padding: 16px;
+            }
         </style>
     </head>
     <body>
         <h1>CSS(Cascading Style Sheet)</h1>
+        
+        <!-- Front-End 개발 언어:
+          1. HTML: 웹 페이지의 정적인 컨텐트 작성. link, image, table, list, ...
+          2. CSS: 웹 페이지의 스타일 설정. color, width, height, position, ...
+          3. JavaScript: 웹 페이지의 동적인 변화, 이벤트 처리, 서버와 (비동기) 통신.
+          
+          CSS 적용 방법:
+          1. external css: 다른 파일에 있는 CSS 내용을 링크해서 사용.
+          2. internal(embedding) css: HTML 파일의 <style> 태그 안에서 스타일 설정.
+          3. inline css: 각 태그의 style 속성의 프로퍼티로 스타일을 설정.
+        -->
+        
+        <div>여기는 div 1 입니다...</div>
+        <div>여기는 div 2 입니다...</div>
+        <div>여기는 div 3 입니다...</div>
+        <div>
+            <p>
+                여기는 paragraph 1 입니다...
+            </p>
+            
+            <!-- 3. inline css -->
+            <p style="border: 2px dotted dodgerblue;">
+                여기는 paragraph 2 입니다...
+            </p>
+        </div>
+        
     </body>
 </html>
