@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>CSS</title>
+        <style>
+            ul {
+                list-style: none;
+                padding: 8px;
+                background-color: MediumSeaGreen;
+            }
+            
+            ul > li {
+                display: inline-block;
+                /* display: 화면 표시 방식: inline(줄바꿈 없음.) + block(가로/세로 크기 설정)  */
+                width: 64px;
+                text-align: center; /* 가운데 정렬 */
+            }
+            
+            ul > li > a {
+                text-decoration: none; /* 링크의 밑줄을 제거 */
+                color: white;
+                font-weight: bold;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <h1>List Style</h1>
+        
+        <!-- unordered list -->
+        <ul>
+            <li>
+                <a href="https://www.google.com/">구글</a>
+            </li>
+            <li>
+                <a href="https://www.naver.com/">네이버</a>
+            </li>
+            <li>
+                <a href="https://www.daum.net">다음</a>
+            </li>
+            <li>
+                <a href="https://www.instagram.com/">인스타</a>
+            </li>
+        </ul>
+        
+    </body>
+</html>
