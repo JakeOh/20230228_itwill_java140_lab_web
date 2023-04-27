@@ -1,0 +1,97 @@
+@CHARSET "UTF-8";
+body {
+	/* font: font-로 시작하는 속성들을 설정할 수 있는 속성
+	  font-size, font-family 등등을 한꺼번에 설정할 수 있음 */ 
+	font: 100% Sans-serif;
+	margin: 20px;
+	line-height: 26px; /* 줄간격 */
+}
+
+.wrapper {
+	position: relative;
+	overflow: auto;
+}
+
+#top {
+	background-color: mediumseagreen;
+	color: white;
+	padding: 15px;
+}
+
+#menu_bar {
+	width: 200px;
+	float: left;
+}
+
+#main {
+	padding: 10px;
+	/*
+	margin-left: 210px;
+    margin-right: 210px;
+    */
+    margin: 0px 210px; /* top & bottom: 0px, right & left: 210px */
+}
+
+#sidebar {
+	background-color: dodgerblue;
+	padding: 10px;
+	width: 180px;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+}
+
+img {
+	border: 5px solid white;
+}
+
+img:hover {
+    -ms-transform: rotate(20deg); /* IE 9 */
+    -moz-transform: rotate(20deg); /* Firefox */
+    -webkit-transform: rotate(20deg); /* Safari */
+    transform: rotate(20degree); /* Standard syntax */
+}
+
+#bottom {
+	background-color: lightgray;
+	text-align: center;
+	padding: 10px;
+	font-size: 80%;
+}
+
+#menu_list {
+	margin: 0px;
+	padding: 0px;
+}
+
+.menu_item {
+	list-style-type: none;
+	background-color: #f1f1f1;
+	border: 1px solid #d4d4d4;
+	padding: 4px;
+	text-align: center;
+	margin-top: 5px;
+}
+
+.menu_item:hover {
+	background-color: #ffccff;
+}
+
+.mylink {
+	text-decoration: none;
+	color: #000000;
+}
+
+.mylink:hover {
+	color: #cc3300;
+}
+
+article {
+	border: 1px solid lightgray;
+	border-radius: 8px;
+	margin: 8px;
+}
+
+img {
+    width: 170px;
+}
