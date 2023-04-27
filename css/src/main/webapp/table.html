@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>CSS</title>
+        <style>
+            table#tbl-member, table#tbl-member th, table#tbl-member td {
+                border: 1px solid gray;
+                border-collapse: collapse;
+            }
+            
+            table#tbl-post {
+                width: 100%; /* 브라우저에서 사용 가능한 가로 길이의 100%를 사용 */
+                border-collapse: collapse;
+            }
+            
+            table#tbl-post, table#tbl-post th, table#tbl-post td {
+                border-bottom: 1px solid gray;
+                padding: 4px;
+            }
+            
+            table#tbl-post th {
+                background-color: MediumSeaGreen;
+                color: white;
+                text-align: left;
+            }
+            
+            table#tbl-post > tbody > tr:nth-child(even) {
+                background-color: #efefef;
+            }
+            
+            table#tbl-post > tbody > tr:hover {
+                background-color: darkgray;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <h1>Table Style</h1>
+        
+        <table id="tbl-member">
+            <caption>회원 정보</caption>
+            <thead>
+                <tr>
+                    <th>아이디</th>
+                    <th>비밀번호</th>
+                    <th>이메일</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>admin</td>
+                    <td>admin0000</td>
+                    <td>admin@itwill.co.kr</td>
+                </tr>
+                <tr>
+                    <td>guest</td>
+                    <td>guest</td>
+                    <td>guest@guest.com</td>
+                </tr>
+                <tr>
+                    <td>test</td>
+                    <td>test1234</td>
+                    <td>test@test.com</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <hr />
+        
+        <table id="tbl-post">
+            <caption>자유 게시판</caption>
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>작성날짜</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>CSS</td>
+                    <td>admin</td>
+                    <td>2023-04-01</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>공지사항입니다.</td>
+                    <td>관리자</td>
+                    <td>2023-04-02</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>안녕하세요</td>
+                    <td>guest</td>
+                    <td>2023-04-03</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>곧 점심시간입니다.</td>
+                    <td>오쌤</td>
+                    <td>2023-04-27</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>test</td>
+                    <td>test</td>
+                    <td>2023-04-27</td>
+                </tr>
+            </tbody>
+        </table>
+        
+    </body>
+</html>
