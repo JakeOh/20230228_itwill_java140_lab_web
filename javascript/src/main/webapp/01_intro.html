@@ -20,7 +20,7 @@
         </div>
         
         <h2>HTML element의 속성(attribute) 변경</h2>
-        <div id="box2">
+        <div id="box2" onclick="changeStyle()">
             여기는 box2입니다...
         </div>
         
@@ -28,6 +28,24 @@
         function changeContent() {
         	const box1 = document.getElementById('box1');
         	box1.innerHTML = '안녕하세요, <strong>JavaScript</strong>!';
+        }
+        
+        let toggle = true;
+        
+        function changeStyle() {
+        	const box2 = document.getElementById('box2');
+        	
+        	if (toggle) {
+            	box2.style.backgroundColor = 'crimson';
+            	box2.style.color = 'white';
+            	box2.style.fontSize = '200%';
+            	toggle = false;
+        	} else {
+        		box2.style.backgroundColor = 'white';
+        		box2.style.color = 'black';
+        		box2.style.fontSize = '100%';
+        		toggle = true;
+        	}
         }
         </script>
     </body>
