@@ -37,6 +37,9 @@ document.addEventListener('DOMContentLoaded', function () {
             default:
                 result.innerHTML = '몰라요~';
         }
+        
+        // 자바스크립트의 switch-case에서 비교는 === 연산자 비교.
+        // 타입을 자동 변환하지 않고, 타입과 값이 일치하는 case의 문장을 실행.
     }
     
 });

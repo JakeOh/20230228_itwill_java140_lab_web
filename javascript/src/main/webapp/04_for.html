@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>JavaScript 4</title>
+    </head>
+    <body>
+        <h1>JavaScript for 반복문</h1>
+        <div id="result"></div>
+        
+        <script>
+        // div#id element를 찾음.
+        const result = document.getElementById('result');
+        
+        let html = ''; // 구구단 출력 결과를 덧붙일 문자열 변수.
+        for (let n = 1; n < 10; n++) {
+        	// 문자열 템플릿: `문자열 ${변수/식}`
+        	html += `2 x ${n} = ${2 * n} <br />`;
+        }
+        result.innerHTML = html;
+        
+        result.innerHTML += '<hr />'; // result.innerHTML = result.innerHTML + '<hr/>';
+        
+        // TODO: 구구단 2단 ~ 9단까지를 이어서 출력.
+        
+        result.innerHTML += '<hr />';
+        
+        // TODO: 구구단 2단은 2x2까지, 3단은 3x3까지, ... 9단은 9x9까지 이어서 출력.
+        
+        </script>
+    </body>
+</html>
