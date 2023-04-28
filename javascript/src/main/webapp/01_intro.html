@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>JavaScript 1</title>
+        <style>
+            div {
+                border: 2px solid gray;
+                margin: 8px;
+                padding: 8px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>자바스크립트 소개</h1>
+        
+        <h2>HTML element의 컨텐트 변경</h2>
+        <div id="box1" onclick="changeContent()">
+            여기는 box1입니다...
+        </div>
+        
+        <h2>HTML element의 속성(attribute) 변경</h2>
+        <div id="box2">
+            여기는 box2입니다...
+        </div>
+        
+        <script>
+        function changeContent() {
+        	const box1 = document.getElementById('box1');
+        	box1.innerHTML = '안녕하세요, <strong>JavaScript</strong>!';
+        }
+        </script>
+    </body>
+</html>
