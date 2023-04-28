@@ -10,6 +10,7 @@
         <input type="number" id="numberInput" placeholder="정수 입력" />
         <button onclick="checkEven()">짝수? 홀수?</button>
         <button onclick="checkPositive()">양수? 음수?</button>
+        <button onclick="checkEven2()">삼항 연산자</button>
         <div id="result">결과</div>
         
         <script>
@@ -87,6 +88,12 @@
         	} else {
         		result.innerHTML = number;
         	}
+        }
+        
+        function checkEven2() {
+        	const number  = numberInput.value;
+        	// 삼항 연산자: (조건식) ? (참일 때 값) : (거짓일 때 값)
+        	result.innerHTML = (number % 2) ? '홀수' : '짝수';
         }
         </script>
     </body>
