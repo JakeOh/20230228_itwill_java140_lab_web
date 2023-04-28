@@ -5,6 +5,12 @@
         <title>JavaScript 2</title>
     </head>
     <body>
+        <h1>자바스크립트 조건문</h1>
+        
+        <input type="number" id="numberInput" placeholder="정수 입력" />
+        <button onclick="checkEven()">짝수? 홀수?</button>
+        <button onclick="checkPositive()">양수? 음수?</button>
+        <div id="result">결과</div>
         
         <script>
         /* JavaScript의 변수(variable) 선언 방법:
@@ -23,6 +29,65 @@
           (주의) var는 같은 이름으로 변수를 여러번 선언할 수 있음.
           let, const는 같은 이름으로 변수를 선언할 수 없음.
         */
+        
+        const x = 1;
+        console.log('x =', x, typeof x);
+        // x = 2; //-> 실행 중 오류 발생: 상수(const) 변수는 값을 재할당할 수 없음.
+        
+        let y = 10;
+        console.log('y =', y, typeof y);
+        
+        y = 'hello'; // let으로 선언된 변수는 값을 재할당할 수 있음. 다른 타입의 값도 재할당할 수 있음.
+        console.log('y =', y, typeof y);
+        
+        // 자바스크립트의 비교 연산자:
+        // ==, ===, !=, !==, >, >=, <, <=
+        // ==, !=: 피연산자들의 타입을 자동으로 변환한 후 값이 같은지/다른지를 비교.
+        // ===, !==: 피연산자들의 타입으로 변환하지 않고, 타입과 값이 같은지/다른지를 비교.
+        
+        // 논리 연산자: &&, ||, !
+        
+        // id="numberInput"인 html element를 찾음.
+        const numberInput = document.getElementById('numberInput');
+        //console.log(numberInput);
+        
+        // id="result"인 div element를 찾음.
+        const result = document.getElementById('result');
+        //console.log(result);
+        
+        function checkEven() {
+        	const number = numberInput.value; // input에 입력된 값을 읽음.
+        	console.log(number, typeof number); // input에 입력된 값의 타입은 string.
+        	
+        	// 자바스크립트는 사칙연산을 수행할 때 타입을 자동으로 변환.
+        	// string 타입의 number 변수를 number 타입으로 변환한 후 2로 나눈 나머지를 계산.
+        	
+        	// 자바는 if (조건식)에서 조건식의 결과는 반드시 boolean(true/false)이어야만 함.
+        	// 자바스크립트는 falsy value(false로 취급하는 값)이 있음.
+        	// (1) 숫자(number)인 경우, 0
+        	// (2) 문자열(string)인 경우, 빈 문자열('')
+        	// (3) 배열인 경우, 빈 배열([])
+        	// (4) 객체인 경우, null
+        	// (5) undefined(값이 할당되지 않은 변수)
+        	
+        	//if (number % 2 === 1) {	
+        	if (number % 2) {
+        		result.innerHTML = number + ': 홀수';
+        	} else {
+        		result.innerHTML = number + ': 짝수';
+        	}
+        }
+        
+        function checkPositive() {
+        	const number = numberInput.value;
+        	if (number > 0) {
+        		result.innerHTML = number + ': 양수';
+        	} else if (number < 0) {
+        		result.innerHTML = number + ': 음수';
+        	} else {
+        		result.innerHTML = number;
+        	}
+        }
         </script>
     </body>
 </html>
