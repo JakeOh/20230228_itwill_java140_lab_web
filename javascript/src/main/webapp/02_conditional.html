@@ -92,7 +92,9 @@
         
         function checkEven2() {
         	const number  = numberInput.value;
-        	// 삼항 연산자: (조건식) ? (참일 때 값) : (거짓일 때 값)
+        	// 삼항 연산자
+        	// (조건식) ? (참일 때 값) : (거짓일 때 값)
+        	// (조건식1) ? (참일 때 값) : ((조건식2) ? (참일 때 값) : (거짓일 때 값))
         	result.innerHTML = (number % 2) ? '홀수' : '짝수';
         }
         </script>
