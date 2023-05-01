@@ -42,7 +42,49 @@ console.log('result =', result); // -> NaN(Not a Number)
 // 함수 호출에서 전달한 모든 값들을 저장하는 (배열과 비슷한) 객체.
 function test() {
     console.log(arguments);
+    for (let x of arguments) {
+        console.log(x);
+    }
 }
 
 test(1);
 test(1, 'hello');
+
+/*
+ JavaScript 함수의 특징: 함수는 객체(object)!
+ 1. 함수는 프로퍼티(property - 자바의 필드)를 가질 수 있음. (예) arguements
+ 2. 함수는 변수에 저장할 수 있음.
+ 3. 함수의 argument로 다른 함수를 전달할 수 있음.
+ 4. 함수 내부에서 다른 함수를 선언(정의)할 수 있음.
+ 5. 함수는 다른 함수를 리턴할 수 있음.
+*/
+
+const plus = add; // 함수를 변수에 저장.
+result = plus(100, 200); // 변수 plus는 함수.
+console.log('result =', result);
+
+// 익명 함수: 이름이 없는 함수.
+const minus = function (x, y) {
+    return x - y;
+};
+
+console.log('minus =', minus(1, 2));
+
+// 익명 함수를 선언과 동시에 호출:
+result = (function (x, y) {
+    return x / y;
+})(1, 2);
+console.log('result =', result);
+
+// 함수를 argument로 갖는 함수:
+function calculate(x, y, operator) {
+    return operator(x, y);
+}
+
+result = calculate(1, 2, add);
+console.log('result =', result);
+
+result = calculate(1, 2, function (x, y) {
+    return x - y;
+});
+console.log('result =', result);
