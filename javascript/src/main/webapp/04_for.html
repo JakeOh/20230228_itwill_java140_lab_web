@@ -21,11 +21,26 @@
         
         result.innerHTML += '<hr />'; // result.innerHTML = result.innerHTML + '<hr/>';
         
-        // TODO: 구구단 2단 ~ 9단까지를 이어서 출력.
-        
+        // 구구단 2단 ~ 9단까지 이어서 출력.
+        html = '';
+        for (let dan = 2; dan < 10; dan++) {
+        	for (let n = 1; n < 10; n++) {
+        		html += `${dan} x ${n} = ${dan * n} <br />`;
+        	}
+        	html += '-------------------- <br />';
+        }
+        result.innerHTML += html;
         result.innerHTML += '<hr />';
         
-        // TODO: 구구단 2단은 2x2까지, 3단은 3x3까지, ... 9단은 9x9까지 이어서 출력.
+        // 구구단 2단은 2x2까지, 3단은 3x3까지, ... 9단은 9x9까지 이어서 출력.
+        html = '';
+        for (let dan = 2; dan < 10; dan++) {
+        	for (let n = 1; n <= dan; n++) {
+        		html += `${dan} x ${n} = ${dan * n} <br />`;
+        	}
+        	html += '-------------------- <br />';
+        }
+        result.innerHTML += html;
         
         </script>
     </body>
