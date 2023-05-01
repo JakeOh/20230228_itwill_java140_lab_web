@@ -32,4 +32,47 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log(key, ':', person[key]);
     }
     
+    // 메서드를 갖는 객체:
+    const score = {
+        korean: 100,
+        english: 90,
+        math: 70,
+        sum: function () {
+            return this.korean + this.english + this.math;
+        },
+        mean: function () {
+            return this.sum() / 3;
+        },
+    };
+    console.log(score);
+    console.log(score.sum()); // 메서드 호출
+    console.log(score.mean());
+    
+    // 생성자 함수:
+    function Score(korean, english, math) {
+        // 필드
+        this.korean = korean;
+        this.english = english;
+        this.math = math;
+        
+        // 메서드
+        this.sum = function () {
+            return this.korean + this.english + this.math;
+        };
+        this.mean = function () {
+            return this.sum() / 3;
+        };
+    }
+    
+    // 생성자 함수 호출:
+    const score1 = new Score(10, 20, 30); // 객체 생성
+    console.log(score1);
+    console.log(score1.sum()); // 객체 메서드 호출
+    console.log(score1.mean());
+    
+    const score2 = new Score(90, 95, 89);
+    console.log(score2);
+    console.log(score2.sum());
+    console.log(score2.mean());
+    
 });
