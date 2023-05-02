@@ -45,6 +45,9 @@ public class FirstServlet extends HttpServlet {
 	        .append("  </head>")
 	        .append("  <body>")
 	        .append("    <h1>첫번째 Servlet</h1>")
+	        .append("    <h2>")
+	        .append(curTime.toString())
+	        .append("    </h2>")
 	        .append("  </body>")
 	        .append("</html>");
 	}
