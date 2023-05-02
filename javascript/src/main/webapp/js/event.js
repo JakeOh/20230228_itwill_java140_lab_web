@@ -7,8 +7,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const itemInput = document.querySelector('input#itemInput');
     const btnInput = document.querySelector('button#btnInput');
     const itemList = document.querySelector('ul#itemList');
+    const itemInput2 = document.querySelector('input#itemInput2');
+    const itemList2 = document.querySelector('ul#itemList2');
     
-    btnInput.addEventListener('click', function () {
+    btnInput.addEventListener('click', function (e) {
+        // console.log(e); //-> PointerEvent
+        
         // input에 입력된 값을 읽음.
         const value = itemInput.value;
         // console.log(value);
@@ -26,4 +30,14 @@ document.addEventListener('DOMContentLoaded', function () {
         itemInput.focus();
     });
     
+    itemInput2.addEventListener('keydown', function (e) {
+        // console.log(e); // -> e: KeyboardEvent 객체
+        // 모든 이벤트 핸들러 함수(콜백)은 이벤트 객체를 argument로 전달받음.
+        if (e.key === 'Enter') { // 엔터 키가 눌렸을 때
+            const item = `<li>${itemInput2.value}</li>`;
+            itemList2.innerHTML += item;
+            itemInput2.value = '';
+            itemInput2.focus();
+        }
+    });
 });
