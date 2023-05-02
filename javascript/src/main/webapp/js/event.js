@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const itemList = document.querySelector('ul#itemList');
     const itemInput2 = document.querySelector('input#itemInput2');
     const itemList2 = document.querySelector('ul#itemList2');
+    const username = document.querySelector('input#username');
+    const age = document.querySelector('input#age');
+    const result = document.querySelector('div#result');
     
     btnInput.addEventListener('click', function (e) {
         // console.log(e); //-> PointerEvent
@@ -40,4 +43,20 @@ document.addEventListener('DOMContentLoaded', function () {
             itemInput2.focus();
         }
     });
+    
+    username.addEventListener('change', function (e) {
+        updateNameAndAge();
+    });
+    
+    age.addEventListener('change', function (e) {
+        updateNameAndAge();
+    });
+    
+    function updateNameAndAge() {
+        const name = username.value;
+        const age2 = age.value;
+        const text = `<b>이름:</b> ${name}, <b>나이:</b> ${age2}`;
+        result.innerHTML = text;
+    }
+    
 });
