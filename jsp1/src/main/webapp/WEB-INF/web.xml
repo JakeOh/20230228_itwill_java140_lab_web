@@ -9,4 +9,14 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>firstServlet</display-name>
+    <servlet-name>firstServlet</servlet-name>
+    <servlet-class>com.itwill.jsp1.FirstServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>firstServlet</servlet-name>
+    <url-pattern>/ex1</url-pattern>
+  </servlet-mapping>
 </web-app>
