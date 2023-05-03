@@ -26,7 +26,7 @@ public class ForwardServlet extends HttpServlet {
 		// 같은 WAS(Web Application Server)의 같은 웹 애플리케이션 안에서만 페이지 이동이 가능.
 		// 요청 주소(URL)가 바뀌지 않음.
 		// request 객체와 response 객체가 유지됨.
-		// 다른 (욉) 서버 또는 다른 웹 애플리케이션의 페이지로 forward 이동을 할 수 없음. 
+		// 다른 (외부) 서버 또는 다른 웹 애플리케이션의 페이지로 forward 이동을 할 수 없음. 
 		
 		// src/main/webapp 폴더 아래의 파일 경로와 파일 이름을 사용.
 	    request.getRequestDispatcher("example.jsp")
