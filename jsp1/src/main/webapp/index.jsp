@@ -28,6 +28,9 @@
                 그 이후 주소만 표기 -->
                 <a href="intro.jsp">JSP 소개</a>
             </li>
+            <li>
+                <a href="form.jsp">form 제출</a>
+            </li>
         </ul>
     </body>
 </html>
