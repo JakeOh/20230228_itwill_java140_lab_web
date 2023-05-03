@@ -14,4 +14,14 @@
     <servlet-name>firstServlet</servlet-name>
     <url-pattern>/ex1</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>redirectServlet</display-name>
+    <servlet-name>redirectServlet</servlet-name>
+    <servlet-class>com.itwill.jsp1.RedirectServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>redirectServlet</servlet-name>
+    <url-pattern>/ex4</url-pattern>
+  </servlet-mapping>
 </web-app>

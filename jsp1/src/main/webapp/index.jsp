@@ -16,6 +16,12 @@
             <li>
                 <a href="ex2">두번째 Servlet</a>
             </li>
+            <li>
+                <a href="ex3">포워드</a>
+            </li>
+            <li>
+                <a href="ex4">리다이렉트</a>
+            </li>
         </ul>
     </body>
 </html>
