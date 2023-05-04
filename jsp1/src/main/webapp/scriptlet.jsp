@@ -48,5 +48,51 @@
             </tbody>
         </table>
         
+        <hr />
+        
+        <h1>scriptlet, expression 활용</h1>
+        
+        <table>
+            <caption>연락처</caption>
+            <thead>
+                <tr>
+                    <th>NO.</th>
+                    <th>이름</th>
+                    <th>전화번호</th>
+                    <th>이메일</th>
+                </tr>
+            </thead>
+            <tbody>
+            <% for (Contact c : data) { %>
+                <tr>
+                    <td><%= c.getId() %></td>
+                    <td><%= c.getName() %></td>
+                    <td><%= c.getPhone() %></td>
+                    <td><%= c.getEmail() %></td>
+                </tr>
+            <% } %>
+            </tbody>
+        </table>
+        
+        <hr />
+        
+        <h2>Unordered List</h2>
+        <%-- ul 만들기: li은 연락처 리스트의 이름. --%>
+        <ul>
+        <% for (Contact c : data) { %>
+            <li><%= c.getName() %></li>
+        <% } %>
+        </ul>
+        
+        <h2>Description List</h2>
+        <%-- dl 만들기: dt는 연락처에서 이름, dd는 연락처에서 전화번호와 이메일 --%>
+        <dl>
+        <% for (Contact c : data) { %>
+            <dt><%= c.getName() %></dt>
+            <dd><%= c.getPhone() %></dd>
+            <dd><%= c.getEmail() %></dd>
+        <% } %>
+        </dl>
+        
     </body>
 </html>
