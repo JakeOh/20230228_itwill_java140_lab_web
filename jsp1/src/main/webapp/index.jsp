@@ -37,6 +37,9 @@
             <li>
                 <a href="scriptlet.jsp">스크립트릿(scriptlet)</a>
             </li>
+            <li>
+                <a href="actiontag.jsp">액션 태그(action tag)</a>
+            </li>
         </ul>
     </body>
 </html>

@@ -55,7 +55,7 @@
           3. JSP 구성 요소(태그)
              (1) 주석(comment)
              (2) 지시문(directive): <%@ ... %>
-                 <%@ page ... %>, <%@ include ... %>, <%@ taglib ... %>, ...
+                 <%@ page ... %>, <%@ include ... %>, <%@ taglib ... %>
              (3) 선언문(declaration): <%! ... %>
                  JSP가 Java로 변환될 때, 클래스의 필드와 메서드를 선언하는 부분.
              (4) 스크립트릿(scriptlet): <% ... %>
