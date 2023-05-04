@@ -24,7 +24,7 @@
           incluce 지시문이 사용된 위치에 jsp, jspf, html 파일의 내용을 삽입하고,
           하나의 자바 클래스 파일로 변환되고 컴파일됨.
         --%>
-        <%@ include file="header.jspf" %>
+        <%@ include file="header.jsp" %>
         
         <main>
             <h1>메인 페이지</h1>
