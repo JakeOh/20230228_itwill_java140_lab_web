@@ -63,6 +63,9 @@
             <li>
                 <a href="format.jsp">포맷팅</a>
             </li>
+            <li>
+                <a href="mvc">MVC pattern</a>
+            </li>
         </ul>
     </body>
 </html>
