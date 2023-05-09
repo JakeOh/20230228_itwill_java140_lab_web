@@ -6,6 +6,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 /**
  * Servlet implementation class MvcServlet
@@ -18,7 +20,12 @@ public class MvcServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/view.jsp")
+		LocalDateTime now = LocalDateTime.now();
+		Timestamp ts = Timestamp.valueOf(now);
+	    
+		request.setAttribute("now", ts);
+		
+	    request.getRequestDispatcher("/WEB-INF/view.jsp")
 		    .forward(request, response);
 	}
 

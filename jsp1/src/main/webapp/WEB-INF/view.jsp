@@ -8,5 +8,6 @@
     </head>
     <body>
         <h1>MVC pattern</h1>
+        <h2>${ now }</h2>
     </body>
 </html>
