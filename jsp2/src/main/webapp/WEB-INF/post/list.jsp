@@ -24,5 +24,28 @@
                 </li>
             </ul>
         </nav>
+        
+        <main>
+            <table>
+                <thead>
+                    <tr>
+                        <th>번호</th>
+                        <th>제목</th>
+                        <th>작성자</th>
+                        <th>수정시간</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <c:forEach items="${ posts }" var="post">
+                        <tr>
+                            <td>${ post.id }</td>
+                            <td>${ post.title }</td>
+                            <td>${ post.author }</td>
+                            <td>${ post.modifiedTime }</td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+        </main>
     </body>
 </html>
