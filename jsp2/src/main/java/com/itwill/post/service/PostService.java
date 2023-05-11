@@ -34,5 +34,11 @@ public class PostService {
         
         return postDao.select();
     }
+
+    public int create(Post post) {
+        log.info("create({})", post);
+        
+        return postDao.insert(post);
+    }
     
 }
