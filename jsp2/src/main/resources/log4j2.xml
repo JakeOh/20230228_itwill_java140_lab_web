@@ -7,6 +7,9 @@
     </Appenders>
     <Loggers>
         <!-- log4j2 로그 레벨: all < trace < debug < info < warn < error < fatal -->
+        <Logger name="com.zaxxer.hikari" level="INFO" additivity="false">
+            <AppenderRef ref="out" />
+        </Logger>
         <Root level="INFO" additivity="false">
             <AppenderRef ref="out" />
         </Root>
