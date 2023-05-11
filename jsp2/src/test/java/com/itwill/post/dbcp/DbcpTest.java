@@ -1,5 +1,8 @@
 package com.itwill.post.dbcp;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -14,7 +17,7 @@ public class DbcpTest {
     private final Logger log = LoggerFactory.getLogger(DbcpTest.class);
     
     @Test // JUnit 단위 테스트 엔진이 실행할 메서드.
-    public void testHikariCP() {
+    public void testHikariCP() throws SQLException {
         // HikariCP 환경 설정을 위한 객체 생성:
         HikariConfig config = new HikariConfig();
         
@@ -29,8 +32,18 @@ public class DbcpTest {
         
         // ds가 null이 아니면 단위 테스트 성공, 그렇지 않으면 실패.
         Assertions.assertNotNull(ds);
-        
         log.info("ds = {}", ds);
+        
+        // Connection Pool(Data Source)에서 Connection 객체를 빌려옴:
+        Connection conn = ds.getConnection();
+        
+        // conn이 null이 아니면 단위 테스트 성공, 그렇지 않으면 실패.
+        Assertions.assertNotNull(conn);
+        log.info("conn = {}", conn);
+        
+        // 사용했던 Connection 객체를 Pool에 반환:
+        conn.close(); // 데이터베이스 서버와의 접속을 물리적으로 끊는 게 아님.
+        log.info("conn 반환 성공.");
     }
 
 }
