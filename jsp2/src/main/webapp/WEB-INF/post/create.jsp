@@ -21,7 +21,7 @@
                 </li>
                 <li>
                     <c:url var="postList" value="/post"></c:url>
-                    <a href="${ postList }">포스트 목록 페이지</a>
+                    <a href="${ postList }">포스트 목록</a>
                 </li>
             </ul>
         </nav>
