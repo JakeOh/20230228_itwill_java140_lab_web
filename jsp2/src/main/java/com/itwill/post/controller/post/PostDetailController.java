@@ -10,6 +10,9 @@ import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.itwill.post.model.Post;
+import com.itwill.post.service.PostService;
+
 /**
  * Servlet implementation class PostDetailController
  */
@@ -19,6 +22,8 @@ public class PostDetailController extends HttpServlet {
 	
 	private static final Logger log = LoggerFactory.getLogger(PostDetailController.class);
 
+	private final PostService postService = PostService.getInstance();
+	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -31,8 +36,11 @@ public class PostDetailController extends HttpServlet {
 		long id = Long.parseLong(param); // id는 숫자 타입이어야 하기 때문에 문자열을 숫자로 변환.
 		log.info("id = {}", id);
 		
-		// TODO: DB에서 화면에 보여줄 포스트 내용을 검색
-		// TODO: 뷰(JSP)에 전달.
+		// DB에서 화면에 보여줄 포스트 내용을 검색
+		Post post = postService.read(id);
+		
+		// 뷰(JSP)에 전달.
+		request.setAttribute("post", post);
 		
 		// 뷰로 포워드
 		request.getRequestDispatcher("/WEB-INF/post/detail.jsp")

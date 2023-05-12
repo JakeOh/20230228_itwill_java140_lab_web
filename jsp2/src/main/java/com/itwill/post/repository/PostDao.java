@@ -88,6 +88,7 @@ public class PostDao {
         return post;
     }
 
+    // 새 포스트 작성
     private static final String SQL_INSERT = 
             "insert into POSTS (TITLE, CONTENT, AUTHOR) values (?, ?, ?)";
     
@@ -121,6 +122,42 @@ public class PostDao {
         }
         
         return result;
+    }
+    
+    // 포스트 번호로 검색
+    private static final String SQL_SELECT_BY_ID = 
+            "select * from POSTS where ID = ?";
+    
+    public Post select(long id) {
+        log.info("select(id={})", id);
+        log.info(SQL_SELECT_BY_ID);
+        
+        Post post = null;
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            conn = ds.getConnection();
+            stmt = conn.prepareStatement(SQL_SELECT_BY_ID);
+            stmt.setLong(1, id);
+            rs = stmt.executeQuery();
+            if (rs.next()) {
+                post = recordToPost(rs);
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                rs.close();
+                stmt.close();
+                conn.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        
+        return post;
     }
 
 }
