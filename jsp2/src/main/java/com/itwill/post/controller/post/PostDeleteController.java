@@ -35,7 +35,9 @@ public class PostDeleteController extends HttpServlet {
 		long id = Long.parseLong(request.getParameter("id"));
 		log.info("id = {}", id);
 		
-		// TODO: 서비스 계층의 메서드를 사용해서 포스트를 삭제.
+		// 서비스 계층의 메서드를 사용해서 포스트를 삭제.
+		int result = postService.delete(id);
+		log.info("포스트 삭제 결과 = {}", result);
 		
 		// 포스트 목록 페이지로 이동(redirect): PRG(post-redirect-get)
 		response.sendRedirect("/post/post");

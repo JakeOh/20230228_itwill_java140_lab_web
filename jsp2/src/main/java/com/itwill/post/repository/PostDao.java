@@ -160,4 +160,10 @@ public class PostDao {
         return post;
     }
 
+    public int delete(long id) {
+        log.info("delete(id={})", id);
+        
+        return 0;
+    }
+    
 }

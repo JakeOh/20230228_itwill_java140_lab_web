@@ -47,4 +47,10 @@ public class PostService {
         return postDao.select(id);
     }
     
+    public int delete(long id) {
+        log.info("delete(id={})", id);
+        
+        return postDao.delete(id);
+    }
+    
 }
