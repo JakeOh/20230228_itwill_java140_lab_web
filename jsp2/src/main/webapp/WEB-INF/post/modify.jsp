@@ -54,5 +54,7 @@
                 </div>
             </form>
         </main>
+        
+        <script src="../js/post-modify.js"></script>
     </body>
 </html>
