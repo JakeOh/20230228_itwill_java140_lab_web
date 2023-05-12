@@ -31,6 +31,13 @@ document.addEventListener('DOMContentLoaded', function () {
         const result = confirm(`NO. ${id} 정말 삭제할까요?`);
         // 확인 -> true, 취소 -> false 리턴.
         console.log(`삭제 확인 결과 = ${result}`); // 브라우저 개발자 도구 콘솔 창 로그.
+        
+        // 사용자가 confirm 창에서 '확인'을 클릭했을 때
+        if (result) {
+            form.action = 'delete'; // 폼 제출(요청) 주소
+            form.method = 'post'; // 요청 방식
+            form.submit(); // 폼 제출(요청 보내기)
+        }
     });
     
 });
