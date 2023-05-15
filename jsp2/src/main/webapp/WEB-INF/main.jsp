@@ -15,11 +15,21 @@
         <nav>
             <ul>
                 <li>
+                    <a>로그아웃</a>
+                </li>
+                <li>
+                    <c:url var="signInPage" value="/user/signin"></c:url>
+                    <a href="${ signInPage }">로그인</a>
+                </li>
+                <li>
                     <c:url var="postList" value="/post"></c:url>
                     <a href="${ postList }">포스트 목록 페이지</a>
                 </li>
             </ul>
         </nav>
         
+        <main>
+            <!-- TODO -->
+        </main>
     </body>
 </html>
