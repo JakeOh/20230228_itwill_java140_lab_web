@@ -5,6 +5,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 
 import org.slf4j.Logger;
@@ -61,7 +63,12 @@ public class UserSignInController extends HttpServlet {
 		}
 		
 		// 로그인 성공
+		// (1) 세션(session)에 로그인 정보를 저장.
+		HttpSession session = request.getSession(); // 세션 객체 찾기
+		session.setAttribute("signedInUser", user.getUsername()); // 세션 객체에 로그인 username만 저장.
 		
+		// (2) 적절한 페이지로 이동. -> 메인 페이지로 이동.
+		response.sendRedirect("/post");
 	}
 
 }
