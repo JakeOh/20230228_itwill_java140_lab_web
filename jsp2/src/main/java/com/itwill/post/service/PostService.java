@@ -52,5 +52,11 @@ public class PostService {
         
         return postDao.delete(id);
     }
+
+    public int update(Post post) {
+        log.info("update({})", post);
+        
+        return postDao.update(post);
+    }
     
 }

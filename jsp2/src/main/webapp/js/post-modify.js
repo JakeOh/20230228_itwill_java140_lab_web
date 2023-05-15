@@ -40,4 +40,25 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
     
+    btnUpdate.addEventListener('click', (e) => {
+        e.preventDefault(); // 기본 동작인 폼 제출 기능을 막음.
+        
+        const id = inputId.value; // 포스트 번호
+        const title = inputTitle.value; // 포스트 제목
+        const content = textareaContent.value; // 포스트 내용
+        
+        if (title === '' || content === '') {
+            // 제목 또는 내용이 비어 있으면
+            alert('제목과 내용은 반드시 입력해야 합니다.');
+            return; // 함수 종료
+        }
+        
+        const result = confirm(`NO.${id} 포스트를 업데이트할까요?`);
+        if (result) {
+            form.action = 'update'; // 업데이트 요청 주소
+            form.method = 'post'; // 요청 방식
+            form.submit(); // 폼 제출(요청 보내기)
+        }
+    });
+    
 });

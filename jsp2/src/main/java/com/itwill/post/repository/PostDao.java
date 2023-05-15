@@ -160,10 +160,68 @@ public class PostDao {
         return post;
     }
 
+    // 포스트 아이디(PK)로 삭제하기:
+    private static final String SQL_DELETE_BY_ID = 
+            "delete from POSTS where ID = ?";
+    
     public int delete(long id) {
         log.info("delete(id={})", id);
+        log.info(SQL_DELETE_BY_ID);
         
-        return 0;
+        int result = 0; // SQL 실행 결과를 저장할 변수
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        try {
+            conn = ds.getConnection();
+            stmt = conn.prepareStatement(SQL_DELETE_BY_ID);
+            stmt.setLong(1, id);
+            result = stmt.executeUpdate();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                stmt.close();
+                conn.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        
+        return result;
+    }
+
+    // 해당 아이디의 포스트의 제목, 내용, 수정 시간을 업데이트:
+    private static final String SQL_UPDATE = 
+            "update POSTS set TITLE = ?, CONTENT = ?, MODIFIED_TIME = sysdate where ID = ?";
+    
+    public int update(Post post) {
+        log.info("update({})", post);
+        log.info(SQL_UPDATE);
+        
+        int result = 0;
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        try {
+            conn = ds.getConnection();
+            stmt = conn.prepareStatement(SQL_UPDATE);
+            stmt.setString(1, post.getTitle());
+            stmt.setString(2, post.getContent());
+            stmt.setLong(3, post.getId());
+            result = stmt.executeUpdate();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                stmt.close();
+                conn.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        
+        return result;
     }
     
 }
