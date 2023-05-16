@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd" id="WebApp_ID" version="5.0">
+  <display-name>spring1</display-name>
+  
+  <!-- 스프링 컨텍스트 설정 정보들을 저장한 파일의 위치 -->
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>/WEB-INF/application-context.xml</param-value>
+  </context-param>
+  
+  <!-- Filter 설정 -->
+  
+  <!-- Listener 설정 -->
+  
+  <!-- Servlet 설정 -->
+  
+</web-app>
