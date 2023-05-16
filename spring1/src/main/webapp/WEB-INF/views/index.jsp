@@ -9,6 +9,7 @@
     <body>
         <header>
             <h1>메인 페이지</h1>
+            <h2>${ now }</h2>
         </header>
     </body>
 </html>
