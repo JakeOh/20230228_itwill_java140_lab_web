@@ -29,6 +29,10 @@
                         <c:url var="signInPage" value="/user/signin"></c:url>
                         <a href="${ signInPage }">로그인</a>
                     </li>
+                    <li>
+                        <c:url var="signUpPage" value="/user/signup"></c:url>
+                        <a href="${ signUpPage }">회원가입</a>
+                    </li>
                 </c:if>
                 
                 <li>
