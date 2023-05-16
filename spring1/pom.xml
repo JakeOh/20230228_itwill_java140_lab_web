@@ -62,6 +62,7 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.26</version>
+            <scope>compile</scope>
         </dependency>
         <!-- Spring Web MVC -->
         <dependency>
