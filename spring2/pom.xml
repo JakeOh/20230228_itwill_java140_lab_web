@@ -5,7 +5,6 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
     <description>Spring MVC &amp; MyBatis Example</description>
-    
     <!-- 프로젝트에서 사용하는 라이브러리(의존성) 이름/버전 설정 -->
     <dependencies>
         <!-- Java EE(Servlet/JSP, EL, action tag) -->
@@ -89,8 +88,19 @@
             <artifactId>spring-test</artifactId>
             <version>6.0.9</version>
         </dependency>
+        <!-- Oracle JDBC -->
+        <dependency>
+            <groupId>com.oracle.database.jdbc</groupId>
+            <artifactId>ojdbc11</artifactId>
+            <version>23.2.0.0</version>
+        </dependency>
+        <!-- HikariCP : Connection Pool(Data Source) -->
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>5.0.1</version>
+        </dependency>
     </dependencies>
-    
     <!-- 프로젝트 빌드 플러그인 설정 -->
     <build>
         <plugins>

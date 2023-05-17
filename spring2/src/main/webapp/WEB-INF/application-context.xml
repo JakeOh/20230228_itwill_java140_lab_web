@@ -9,5 +9,11 @@
         http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
 
     <!-- bean definitions here -->
+    <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+        <property name="driverClassName" value="oracle.jdbc.OracleDriver" />
+        <property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe" />
+        <property name="username" value="scott" />
+        <property name="password" value="tiger" />
+    </bean>
 
 </beans>
