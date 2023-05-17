@@ -40,13 +40,19 @@ public class ExampleController {
     @GetMapping("/ex2")
     public void getParamEx(String username, int age) {
         log.info("getParamEx(username={}, age={})", username, age);
+        // 컨트롤러 메서드를 선언할 때 파라미터의 이름을 요청 파라미터 이름과 같게 선언하면,
+        // DispatcherServlet이 컨트롤러 메서드를 호출하면서 요청 파라미터의 값들을
+        // argument로 전달해줌!
     }
     
     @PostMapping("/ex3")
     public String getParamEx2(
-            @RequestParam(name = "username") String name,
-            @RequestParam(defaultValue = "0") int age
+            @RequestParam(name = "username") String name, // (1)
+            @RequestParam(defaultValue = "0") int age // (2)
     ) {
+        // 컨트롤러 메서드를 선언할 때, 파라미터 선언 앞에 @RequestParam 애너테이션을 사용하는 경우:
+        // (1) 메서드 파라미터와 요청 파라미터 이름이 다를 때, name 속성으로 요청 파라미터 이름을 설정.
+        // (2) 요청 파라미터 값이 없거나 비어있을 때, defaultValue 속성 설정.
         log.info("getParamEx2(name={}, age={})", name, age);
         
         return "ex2";
