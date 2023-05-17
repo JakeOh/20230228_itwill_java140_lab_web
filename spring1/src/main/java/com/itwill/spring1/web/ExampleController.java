@@ -23,9 +23,9 @@ public class ExampleController {
         log.info("home()");
         
         LocalDateTime now = LocalDateTime.now();
-        model.addAttribute("now", now);
+        model.addAttribute("now", now); // 뷰에 전달할 데이터를 세팅.
         
-        return "index"; // 뷰의 이름
+        return "index"; // 뷰의 이름(/WEB-INF/views/index.jsp)
     }
     
     @GetMapping("/ex1")
