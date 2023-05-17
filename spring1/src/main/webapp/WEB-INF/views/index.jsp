@@ -19,6 +19,18 @@
                     <c:url var="ex1" value="/ex1" />
                     <a href="${ ex1 }">Example 1</a>
                 </li>
+                <li>
+                    <c:url var="sample" value="/sample" />
+                    <a href="${ sample }">Sample</a>
+                </li>
+                <li>
+                    <c:url var="forwardTest" value="/forward" />
+                    <a href="${ forwardTest }">포워드 테스트</a>
+                </li>
+                <li>
+                    <c:url var="redirectTest" value="/redirect" />
+                    <a href="${ redirectTest }">리다이렉트 테스트</a>
+                </li>
             </ul>
         </nav>
     </body>

@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.itwill.spring1.dto.UserDto;
 
@@ -62,7 +63,7 @@ public class ExampleController {
     
     @GetMapping("/ex4")
     public String getParamEx3(UserDto user) {
-        log.info("getParamEx2(user={})", user);
+        log.info("getParamEx3(user={})", user);
         // DispatcherServlet은 컨트롤러의 메서드를 호출하기 위해서,
         // 1. 요청 파라미터들을 분석(request.getParameter()).
         // 2. UserDto의 기본 생성자를 호출해서 객체를 생성.
@@ -71,5 +72,34 @@ public class ExampleController {
         
         return "ex2";
     }
+    
+    @GetMapping("/sample")
+    public void sample() {
+        log.info("sample()");
+    }
+    
+    @GetMapping("/forward")
+    public String forwardTest() {
+        log.info("forwardTest()");
+        
+        // 컨트롤러 메서드에서 다른 페이지(요청 주소)로 forward하는 방법:
+        // "forward:"으로 시작하는 문자열을 리턴하면,
+        // DispatcherServlet은 리턴값이 뷰의 이름이 아니라 포워드 이동할 페이지 주소로 인식.
+        return "forward:/sample";
+    }
+    
+    @GetMapping("/redirect")
+    public String redirectTest(RedirectAttributes attrs) {
+        log.info("redirectTest()");
+        
+        // 컨트롤러 메서드에서 리다이렉트되는 페이지까지 유지되는 정보를 저장할 때:
+        attrs.addFlashAttribute("redAttr", "테스트");
+        
+        // 컨트롤러 메서드에서 다른 페이지(요청 주소)로 redirect하는 방법:
+        // "redirect:"으로 시작하는 문자열을 리턴하면,
+        // DispatcherServlet은 리턴값이 뷰의 이름이 아니라 리다이렉트 이동할 페이지 주소로 인식.
+        return "redirect:/sample";
+    }
+    
     
 }
