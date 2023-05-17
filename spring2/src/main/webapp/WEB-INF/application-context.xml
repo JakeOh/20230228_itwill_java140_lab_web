@@ -9,11 +9,18 @@
         http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
 
     <!-- bean definitions here -->
+    <!-- HikariConfig hikariConfig = new HikariConfig(); -->
     <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+        <!-- hikariConfig.setDriverClassName("...") 메서드 호출 -->
         <property name="driverClassName" value="oracle.jdbc.OracleDriver" />
         <property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe" />
         <property name="username" value="scott" />
         <property name="password" value="tiger" />
+    </bean>
+    
+    <!-- HikariDataSource dataSource = new HikariDataSource(hikariConfig); -->
+    <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource">
+        <constructor-arg ref="hikariConfig" />
     </bean>
 
 </beans>
