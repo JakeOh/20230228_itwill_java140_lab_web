@@ -30,6 +30,16 @@
                 <input type="number" name="age" placeholder="나이 입력" />
                 <input type="submit" value="제출" />
             </form>
+            
+            <hr />
+            
+            <h2>DTO submit</h2>
+            <c:url var="ex4" value="/ex4" />
+            <form action="${ ex4 }" method="get">
+                <input type="text" name="username" placeholder="이름 입력" />
+                <input type="number" name="age" placeholder="나이 입력" />
+                <input type="submit" value="제출" />
+            </form>
         </main>
     </body>
 </html>

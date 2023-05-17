@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.itwill.spring1.dto.UserDto;
+
 import lombok.extern.slf4j.Slf4j;
 
 // POJO(Plain Old Java Object): 평범한 자바 객체
@@ -54,6 +56,18 @@ public class ExampleController {
         // (1) 메서드 파라미터와 요청 파라미터 이름이 다를 때, name 속성으로 요청 파라미터 이름을 설정.
         // (2) 요청 파라미터 값이 없거나 비어있을 때, defaultValue 속성 설정.
         log.info("getParamEx2(name={}, age={})", name, age);
+        
+        return "ex2";
+    }
+    
+    @GetMapping("/ex4")
+    public String getParamEx3(UserDto user) {
+        log.info("getParamEx2(user={})", user);
+        // DispatcherServlet은 컨트롤러의 메서드를 호출하기 위해서,
+        // 1. 요청 파라미터들을 분석(request.getParameter()).
+        // 2. UserDto의 기본 생성자를 호출해서 객체를 생성.
+        // 3. 요청 파라미터들의 이름으로 UserDto의 setter 메서드를 찾아서 호출.
+        // 4. UserDto 객체를 컨트롤러 메서드를 호출할 때 argument로 전달.
         
         return "ex2";
     }
