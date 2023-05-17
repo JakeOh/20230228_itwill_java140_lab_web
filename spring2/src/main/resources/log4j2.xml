@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <Console name="out" target="SYSTEM_OUT">
+            <PatternLayout charset="UTF-8"
+                pattern="%d{HH:mm:ss.SSS} %-5level %logger - %m%n" />
+        </Console>
+    </Appenders>
+    <Loggers>
+        <!-- org.springframe 패키지와 그 아래의 모든 패키지에서 info 이상의 로그를 출력 -->
+        <Logger name="org.springframework" level="info" additivity="false">
+            <AppenderRef ref="out" />
+        </Logger>
+        <Root level="info" additivity="false">
+            <AppenderRef ref="out" />
+        </Root>
+    </Loggers>
+</Configuration>
