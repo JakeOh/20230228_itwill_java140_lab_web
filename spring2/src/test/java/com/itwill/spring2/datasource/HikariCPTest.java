@@ -1,5 +1,8 @@
 package com.itwill.spring2.datasource;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -42,12 +45,19 @@ public class HikariCPTest {
     private HikariDataSource ds;
     
     @Test
-    public void testDataSource() {
+    public void testDataSource() throws SQLException {
         Assertions.assertNotNull(config);
         log.info("config = {}", config);
         
         Assertions.assertNotNull(ds);
         log.info("ds = {}", ds);
+        
+        Connection conn = ds.getConnection(); // Data Source에서 Connection을 빌려옴.
+        Assertions.assertNotNull(conn);
+        log.info("conn = {}", conn);
+        
+        conn.close(); // 사용했던 Connection을 Data Source에 반환.
+        log.info("conn close 성공");
     }
     
 }
