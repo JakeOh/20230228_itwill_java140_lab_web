@@ -20,6 +20,16 @@
                 <input type="number" name="age" placeholder="나이 입력" />
                 <input type="submit" value="제출" />
             </form>
+            
+            <hr />
+            
+            <h2>POST submit</h2>
+            <c:url var="ex3" value="/ex3" />
+            <form action="${ ex3 }" method="post">
+                <input type="text" name="username" placeholder="이름 입력" />
+                <input type="number" name="age" placeholder="나이 입력" />
+                <input type="submit" value="제출" />
+            </form>
         </main>
     </body>
 </html>

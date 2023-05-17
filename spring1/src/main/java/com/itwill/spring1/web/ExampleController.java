@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -33,6 +35,21 @@ public class ExampleController {
         log.info("example1() 호출");
         // 컨트롤러 메서드가 void인 경우(뷰의 이름을 리턴하지 않는 경우)
         // 요청 주소의 이름이 뷰의 이름이 됨.
+    }
+    
+    @GetMapping("/ex2")
+    public void getParamEx(String username, int age) {
+        log.info("getParamEx(username={}, age={})", username, age);
+    }
+    
+    @PostMapping("/ex3")
+    public String getParamEx2(
+            @RequestParam(name = "username") String name,
+            @RequestParam(defaultValue = "0") int age
+    ) {
+        log.info("getParamEx2(name={}, age={})", name, age);
+        
+        return "ex2";
     }
     
 }
