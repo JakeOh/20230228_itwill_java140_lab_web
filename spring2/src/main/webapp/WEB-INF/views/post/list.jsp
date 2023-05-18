@@ -13,6 +13,16 @@
         </header>
         
         <nav>
+            <ul>
+                <li>
+                    <c:url var="mainPage" value="/" />
+                    <a href="${ mainPage }">메인 페이지</a>
+                </li>
+                <li>
+                    <c:url var="postCreatePage" value="/post/create" />
+                    <a href="${ postCreatePage       }">새 포스트 작성</a>
+                </li>
+            </ul>
         </nav>
         
         <main>
