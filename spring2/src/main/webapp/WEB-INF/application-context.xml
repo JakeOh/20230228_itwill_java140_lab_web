@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:context="http://www.springframework.org/schema/context" 
+    xmlns:context="http://www.springframework.org/schema/context"
     xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
     xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -12,23 +12,27 @@
     <!-- HikariConfig hikariConfig = new HikariConfig(); -->
     <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
         <!-- hikariConfig.setDriverClassName("...") 메서드 호출 -->
-        <property name="driverClassName" value="oracle.jdbc.OracleDriver" />
-        <property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe" />
+        <property name="driverClassName"
+            value="oracle.jdbc.OracleDriver" />
+        <property name="jdbcUrl"
+            value="jdbc:oracle:thin:@localhost:1521:xe" />
         <property name="username" value="scott" />
         <property name="password" value="tiger" />
     </bean>
-    
+
     <!-- HikariDataSource dataSource = new HikariDataSource(hikariConfig); -->
-    <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource">
+    <bean id="dataSource"
+        class="com.zaxxer.hikari.HikariDataSource">
         <constructor-arg ref="hikariConfig" />
     </bean>
-    
-    <!-- SqlSessionFactoryBean 객체: 
-      Data Source(Connection Pool)을 이용해서 SQL 문장들을 실행하고 결과 처리를 수행하는 객체.
-    -->
-    <bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+
+    <!-- SqlSessionFactoryBean 객체: Data Source(Connection Pool)을 이용해서 SQL 
+        문장들을 실행하고 결과 처리를 수행하는 객체. -->
+    <bean id="sessionFactory"
+        class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <property name="mapperLocations" value="classpath:/mappers/**/*.xml" />
+        <property name="mapperLocations"
+            value="classpath:/mappers/**/*.xml" />
     </bean>
 
 </beans>
