@@ -39,4 +39,6 @@
         base-package와 그 하위 패키지에서 검색함. -->
     <mybatis:scan base-package="com.itwill.spring2.repository"/>
 
+    <!-- Service 애너테이션이 설정된 객체들을 생성하고 관리. -->
+    <context:component-scan base-package="com.itwill.spring2.service" />
 </beans>
