@@ -34,5 +34,7 @@
         <property name="mapperLocations"
             value="classpath:/mappers/**/*.xml" />
     </bean>
+    
+    <mybatis:scan base-package="com.itwill.spring2.repository"/>
 
 </beans>
