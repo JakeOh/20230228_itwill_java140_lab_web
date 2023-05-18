@@ -13,5 +13,8 @@ public interface PostRepository {
     // 메서드 전체 이름: com.itwill.spring2.respository.PostRepository.insert
     int insert(Post post);
     List<Post> selectOrderByIdDesc();
+    Post selectById(long id);
+    int updateTitleAndContent(Post post);
+    int deleteById(long id);
 
 }

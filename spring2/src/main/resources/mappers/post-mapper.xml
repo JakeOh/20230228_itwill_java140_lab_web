@@ -15,4 +15,18 @@
     <select id="selectOrderByIdDesc" resultType="com.itwill.spring2.domain.Post">
         select * from POSTS order by ID desc
     </select>
+    
+    <select id="selectById" resultType="com.itwill.spring2.domain.Post">
+        select * from POSTS where ID = #{id}
+    </select>
+    
+    <update id="updateTitleAndContent">
+        update POSTS
+        set TITLE = #{title}, CONTENT = #{content}, MODIFIED_TIME = systimestamp
+        where ID = #{id}
+    </update>
+    
+    <delete id="deleteById">
+        delete from POSTS where ID = #{id}
+    </delete>
 </mapper>

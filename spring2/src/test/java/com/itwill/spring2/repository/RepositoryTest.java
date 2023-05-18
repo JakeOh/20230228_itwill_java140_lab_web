@@ -24,6 +24,33 @@ public class RepositoryTest {
     private PostRepository postRepository;
     
     @Test
+    public void testDelete() {
+        int result = postRepository.deleteById(2);
+        Assertions.assertEquals(1, result);
+    }
+ 
+//    @Test
+    public void testUpdate() {
+        Post post = Post.builder()
+                .id(1) // 업데이트할 포스트 아이디
+                .title("업데이트 TEST") // 업데이트할 제목
+                .content("MyBatis 프레임워크를 사용한 DB 업데이트") // 업데이트할 내용
+                .build();
+        int result = postRepository.updateTitleAndContent(post);
+        Assertions.assertEquals(1, result);
+    }
+    
+//    @Test
+    public void testSelectById() {
+        Post result = postRepository.selectById(1);
+        Assertions.assertNotNull(result);
+        log.info(result.toString());
+        
+        result = postRepository.selectById(-1);
+        Assertions.assertNull(result);
+    }
+    
+//    @Test
     public void testSelectOrderByIdDesc() {
         List<Post> list = postRepository.selectOrderByIdDesc();
         for (Post p : list) {
