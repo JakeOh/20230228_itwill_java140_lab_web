@@ -2,9 +2,17 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="com.itwill.spring2.repository.PostRepository">
+<!-- namespace의 값은 PostRepository 인터페이스가 있는 패키지 이름과 인터페이스 이름. -->
+    
+    <!-- id의 값은 PostRepository 인터페이스에서 선언하는 메서드 이름. -->
     <insert id="insert">
         insert into POSTS (TITLE, CONTENT, AUTHOR, CREATED_TIME, MODIFIED_TIME)
         values (#{title}, #{content}, #{author}, systimestamp, systimestamp)
     </insert>
+    
+    <select id="selectOrderByIdDesc" resultType="com.itwill.spring2.domain.Post">
+        select * from POSTS order by ID desc
+    </select>
 </mapper>

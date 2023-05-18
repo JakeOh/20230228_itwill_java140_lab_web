@@ -1,5 +1,7 @@
 package com.itwill.spring2.repository;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -22,13 +24,21 @@ public class RepositoryTest {
     private PostRepository postRepository;
     
     @Test
+    public void testSelectOrderByIdDesc() {
+        List<Post> list = postRepository.selectOrderByIdDesc();
+        for (Post p : list) {
+            log.info(p.toString());
+        }
+    }
+    
+    // @Test
     public void testPostRepository() {
         Assertions.assertNotNull(postRepository);
         log.info("postRepository = {}", postRepository);
         
         Post post = Post.builder()
-                .title("Lombok 테스트")
-                .content("Lombok 라이브러리를 이용한 Builder 패턴 구현")
+                .title("MyBatis 테스트")
+                .content("MyBatis 이용한 insert")
                 .author("admin")
                 .build();
         log.info(post.toString());

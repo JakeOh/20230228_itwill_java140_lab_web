@@ -35,6 +35,8 @@
             value="classpath:/mappers/**/*.xml" />
     </bean>
     
+    <!-- MyBatis 프레임워크에서 생성하고 관리하는 bean들을
+        base-package와 그 하위 패키지에서 검색함. -->
     <mybatis:scan base-package="com.itwill.spring2.repository"/>
 
 </beans>

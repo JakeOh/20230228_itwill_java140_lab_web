@@ -11,6 +11,13 @@
         <Logger name="org.springframework" level="info" additivity="false">
             <AppenderRef ref="out" />
         </Logger>
+        
+        <!-- com.itwill.spring2.repository 패키지와 그 하위 패키지의 로그 레벌을 
+            trace 이상으로 설정 -->
+        <Logger name="com.itwill.spring2.repository" level="trace" additivity="false">
+            <AppenderRef ref="out" />
+        </Logger>
+        
         <Root level="info" additivity="false">
             <AppenderRef ref="out" />
         </Root>
