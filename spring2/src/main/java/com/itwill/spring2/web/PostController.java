@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.itwill.spring2.dto.PostCreateDto;
+import com.itwill.spring2.dto.PostDetailDto;
 import com.itwill.spring2.dto.PostListDto;
 import com.itwill.spring2.service.PostService;
 
@@ -52,6 +53,17 @@ public class PostController {
         
         // Post - Redirect - Get
         return "redirect:/post/list";
+    }
+    
+    @GetMapping("/detail")
+    public void detail(long id, Model model) {
+        log.info("detail(id={})", id);
+        
+        // 서비스 계층의 메서드를 호출해서 화면에 보여줄 PostDetailDto를 가져옴.
+        PostDetailDto dto = postService.read(id);
+        
+        // 뷰에 PostDetailDto를 전달.
+        model.addAttribute("post", dto);
     }
 
 }
