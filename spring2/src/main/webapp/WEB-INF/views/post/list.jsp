@@ -27,7 +27,7 @@
                 </li>
                 <li class="nav-item">
                     <c:url var="postCreatePage" value="/post/create" />
-                    <a class="nav-link" href="${ postCreatePage       }">새 포스트 작성</a>
+                    <a class="nav-link" href="${ postCreatePage }">새 포스트 작성</a>
                 </li>
             </ul>
         </nav>
@@ -39,7 +39,7 @@
                         <tr>
                             <th>번호</th>
                             <th>제목</th>
-                            <th>내용</th>
+                            <th>작성자</th>
                             <th>작성시간</th>
                         </tr>
                     </thead>
@@ -48,8 +48,8 @@
                             <tr>
                                 <td>${ post.id }</td>
                                 <td>${ post.title }</td>
-                                <td>${ post.content }</td>
-                                <td>${ post.created_time }</td>
+                                <td>${ post.author }</td>
+                                <td>${ post.createdTime }</td>
                             </tr>
                         </c:forEach>
                     </tbody>

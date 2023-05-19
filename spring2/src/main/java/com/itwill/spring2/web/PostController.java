@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.itwill.spring2.domain.Post;
+import com.itwill.spring2.dto.PostListDto;
 import com.itwill.spring2.service.PostService;
 
 import lombok.RequiredArgsConstructor;
@@ -26,7 +27,7 @@ public class PostController {
         log.info("list()");
         
         // 컨트롤러는 서비스 계층의 메서드를 호출해서 서비스 기능을 수행.
-        List<Post> list = postService.read();
+        List<PostListDto> list = postService.read();
         
         // 뷰에 보여줄 데이터를 Model에 저장.
         model.addAttribute("posts", list);
