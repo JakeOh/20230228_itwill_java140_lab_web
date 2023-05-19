@@ -60,7 +60,10 @@
                     </div>
                 </form>
                 <div class="card-footer">
-                    
+                    <div class="d-flex justify-content-center">
+                        <button class="mx-1 btn btn-outline-danger" id="btnDelete">삭제</button>
+                        <button class="mx-1 btn btn-outline-success" id="btnUpdate">업데이트</button>
+                    </div>
                 </div>
             </div>
         </main>
