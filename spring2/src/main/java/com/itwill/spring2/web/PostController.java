@@ -7,7 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.itwill.spring2.domain.Post;
 import com.itwill.spring2.dto.PostListDto;
 import com.itwill.spring2.service.PostService;
 
