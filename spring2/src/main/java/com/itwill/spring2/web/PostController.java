@@ -34,5 +34,10 @@ public class PostController {
         // 리턴 값이 없는 경우 뷰의 이름은 요청 주소와 같음.
         // /WEB-INF/views/post/list.jsp
     }
+    
+    @GetMapping("/create")
+    public void create() {
+        log.info("create() GET");
+    }
 
 }
