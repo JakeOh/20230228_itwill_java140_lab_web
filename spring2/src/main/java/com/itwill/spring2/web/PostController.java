@@ -65,5 +65,13 @@ public class PostController {
         // 뷰에 PostDetailDto를 전달.
         model.addAttribute("post", dto);
     }
+    
+    @GetMapping("/modify")
+    public void modify(long id, Model model) {
+        log.info("modify(id={})", id);
+        
+        PostDetailDto dto = postService.read(id);
+        model.addAttribute("post", dto);
+    }
 
 }
