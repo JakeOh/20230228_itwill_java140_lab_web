@@ -74,4 +74,14 @@ public class PostController {
         model.addAttribute("post", dto);
     }
 
+    @PostMapping("/delete")
+    public String delete(long id) {
+        log.info("delete(id={})", id);
+        
+        int result = postService.delete(id);
+        log.info("삭제 결과 = {}", result);
+        
+        return "redirect:/post/list";
+    }
+    
 }
