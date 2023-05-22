@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.itwill.spring2.dto.PostCreateDto;
 import com.itwill.spring2.dto.PostDetailDto;
 import com.itwill.spring2.dto.PostListDto;
+import com.itwill.spring2.dto.PostUpdateDto;
 import com.itwill.spring2.service.PostService;
 
 import lombok.RequiredArgsConstructor;
@@ -82,6 +83,16 @@ public class PostController {
         log.info("삭제 결과 = {}", result);
         
         return "redirect:/post/list";
+    }
+    
+    @PostMapping("/update")
+    public String update(PostUpdateDto dto) {
+        log.info("update(dto={})", dto);
+        
+        int result = postService.update(dto);
+        log.info("업데이트 결과 = {}", result);
+        
+        return "redirect:/post/list"; // "redirect:/post/detail?id=" + dto.getId();
     }
     
 }

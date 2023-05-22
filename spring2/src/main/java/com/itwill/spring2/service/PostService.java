@@ -10,6 +10,7 @@ import com.itwill.spring2.domain.Post;
 import com.itwill.spring2.dto.PostCreateDto;
 import com.itwill.spring2.dto.PostDetailDto;
 import com.itwill.spring2.dto.PostListDto;
+import com.itwill.spring2.dto.PostUpdateDto;
 import com.itwill.spring2.repository.PostRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -67,10 +68,10 @@ public class PostService {
     }
     
     // 포스트 업데이트
-    public int update(Post post) {
+    public int update(PostUpdateDto post) {
         log.info("update({})", post);
         
-        return postRepository.updateTitleAndContent(post);
+        return postRepository.updateTitleAndContent(post.toEntity());
     }
     
     // 포스트 삭제
