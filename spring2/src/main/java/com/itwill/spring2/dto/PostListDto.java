@@ -18,7 +18,7 @@ public class PostListDto {
     private long id;
     private String title;
     private String author;
-    private Timestamp createdTime;
+    private Timestamp created_time;
     //-> JSTL에서는 LocalDateTime 객체를 사용하지 못하기 때문에 Timestamp 타입으로 선언.
     
     private long rcnt; // 댓글 개수
@@ -29,7 +29,7 @@ public class PostListDto {
                 .id(entity.getId())
                 .title(entity.getTitle())
                 .author(entity.getAuthor())
-                .createdTime(Timestamp.valueOf(entity.getCreated_time()))
+                .created_time(Timestamp.valueOf(entity.getCreated_time()))
                 .build();
     }
 

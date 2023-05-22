@@ -37,7 +37,9 @@ public class PostService {
     public List<PostListDto> read() {
         log.info("read()");
         
-        List<Post> list = postRepository.selectOrderByIdDesc();
+        return postRepository.selectWithReplyCount();
+        
+//        List<Post> list = postRepository.selectOrderByIdDesc();
         
 //        List<PostListDto> result = new ArrayList<>();
 //        for (Post p : list) {
@@ -45,8 +47,8 @@ public class PostService {
 //            result.add(dto);
 //        }
 //        return result;
-        
-        return list.stream().map(PostListDto::fromEntity).toList();
+       
+//        return list.stream().map(PostListDto::fromEntity).toList();
     }
     
     // 포스트 상세보기 페이지
