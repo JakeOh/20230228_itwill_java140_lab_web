@@ -25,6 +25,12 @@ public class ReplyRepositoryTest {
     private ReplyRepository replyRepository;
     
     @Test
+    public void testReplyCount() {
+        long result = replyRepository.selectReplyCountWithPostId(0);
+        log.info("result = {}", result);
+    }
+    
+//    @Test
     public void testDelete() {
         int result = replyRepository.delete(1);
         log.info("result = {}", result);
@@ -45,7 +51,7 @@ public class ReplyRepositoryTest {
         Reply entity = Reply.builder()
                 .reply_text("JUnit test")
                 .writer("guest")
-                .post_id(1)
+                .post_id(3)
                 .build();
         int result = replyRepository.insert(entity);
         log.info("result = {}", result);

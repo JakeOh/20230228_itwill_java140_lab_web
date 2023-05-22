@@ -3,6 +3,12 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.itwill.spring2.repository.ReplyRepository">
+    <select id="selectReplyCountWithPostId"
+        resultType="java.lang.Long">
+        select count(ID) from REPLIES
+        where POST_ID = #{post_id}
+    </select>
+    
     <select id="selectByPostId" 
         resultType="com.itwill.spring2.domain.Reply">
         select * from REPLIES
