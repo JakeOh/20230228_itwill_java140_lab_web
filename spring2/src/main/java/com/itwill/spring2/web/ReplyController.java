@@ -25,7 +25,7 @@ public class ReplyController {
         log.info("createReply(dto={})", dto);
         
         // TODO
-        return null;
+        return ResponseEntity.ok(1);
     }
 
 }

@@ -24,7 +24,30 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const btnAddReply = document.querySelector('button#btnAddReply');
     const createReply = (e) => {
-        // axios 라이브러리를 사용해서 Ajax 요청을 보냄.
+        const postId = document.querySelector('input#id').value;
+        const replyText = document.querySelector('textarea#replyText').value;
+        const writer = document.querySelector('input#writer').value;
+        
+        if (replyText === '') {
+            alert('댓글 내용을 입력하세요.');
+            return;
+        }
+        
+        const data = { postId, replyText, writer, };
+        
+        axios.post('/spring2/api/reply', data) // POST 방식의 Ajax 요청 보냄.
+            .then((response) => {
+                alert(response.data);
+                
+                // 댓글 입력 창의 내용을 지움.
+                document.querySelector('textarea#replyText').innerHTML = '';
+                
+                // TODO: 댓글 목록을 새로 고침.
+                
+            }) // 성공 응답이 왔을 때 실행할 콜백 함수 등록
+            .catch((error) => {
+                console.log(error);
+            }); // 에러 응답이 왔을 때 실행할 콜백 함수 등록
     };
     btnAddReply.addEventListener('click', createReply);
     
