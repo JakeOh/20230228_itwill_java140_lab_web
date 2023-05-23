@@ -78,7 +78,7 @@
                 <div class="card-header">
                     <span>댓글</span>
                     <span id="replyCount">100</span>개 <!-- TODO: 실제 댓글 개수 -->
-                    <button class="btn" id="btnToggleReply">보이기</button>
+                    <button class="btn" id="btnToggleReply" data-toggle="toggle-off">보이기</button>
                 </div>
                 <div class="card-body collapse" id="replyToggleDiv">
                     <!-- 내 댓글 등록 -->
@@ -104,6 +104,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" 
             integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" 
             crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="../static/js/reply.js"></script>
     </div>
     </body>
