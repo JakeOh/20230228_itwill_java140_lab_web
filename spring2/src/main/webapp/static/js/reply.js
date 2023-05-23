@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert(response.data);
                 
                 // 댓글 입력 창의 내용을 지움.
-                document.querySelector('textarea#replyText').innerHTML = '';
+                document.querySelector('textarea#replyText').value = '';
                 
                 // TODO: 댓글 목록을 새로 고침.
                 
