@@ -19,6 +19,7 @@ public class PostDetailDto {
     private String author;
     private Timestamp createdTime;
     private Timestamp modifiedTime;
+    private long replyCount;
 
     // Post 타입 객체를 PostDetailDto 타입으로 변환해서 리턴.
     public static PostDetailDto fromEntity(Post entity) {

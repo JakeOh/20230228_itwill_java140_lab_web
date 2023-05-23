@@ -24,8 +24,9 @@ public class ReplyController {
     public ResponseEntity<Integer> createReply(@RequestBody ReplyCreateDto dto) {
         log.info("createReply(dto={})", dto);
         
-        // TODO
-        return ResponseEntity.ok(1);
+        int result = replyService.create(dto);
+        
+        return ResponseEntity.ok(result);
     }
 
 }

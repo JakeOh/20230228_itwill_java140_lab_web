@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     const btnAddReply = document.querySelector('button#btnAddReply');
+    
     const createReply = (e) => {
         const postId = document.querySelector('input#id').value;
         const replyText = document.querySelector('textarea#replyText').value;
@@ -37,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         axios.post('/spring2/api/reply', data) // POST 방식의 Ajax 요청 보냄.
             .then((response) => {
-                alert(response.data);
+                alert(`댓글 등록 성공(${response.data})`);
                 
                 // 댓글 입력 창의 내용을 지움.
                 document.querySelector('textarea#replyText').value = '';

@@ -75,9 +75,9 @@
             </section> <!-- 포스트 상세 보기 카드 -->
             
             <section class="my-2 card">
-                <div class="card-header">
+                <div class="card-header fw-bold">
                     <span>댓글</span>
-                    <span id="replyCount">100</span>개 <!-- TODO: 실제 댓글 개수 -->
+                    <span id="replyCount">${ post.replyCount }</span>개
                     <button class="btn" id="btnToggleReply" data-toggle="toggle-off">보이기</button>
                 </div>
                 <div class="card-body collapse" id="replyToggleDiv">
