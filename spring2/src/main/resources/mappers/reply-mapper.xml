@@ -13,6 +13,7 @@
         resultType="com.itwill.spring2.domain.Reply">
         select * from REPLIES
         where POST_ID = #{post_id}
+        oreder by MODIFIED_TIME desc
     </select>
     
     <insert id="insert">
