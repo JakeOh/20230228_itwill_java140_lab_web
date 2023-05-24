@@ -5,6 +5,21 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+    const getRepliesWithPostId = async () => {
+        // 댓글 목록을 요청하기 위한 포스트 번호(아이디)
+        const postId = document.querySelector('input#id').value;
+        // 댓글 목록을 요청할 URL
+        const reqUrl = `/spring2/api/reply/all/${postId}`;
+        
+        // Ajax 요청을 보내고 응답을 기다림.
+        try {
+            const response = await axios.get(reqUrl);
+            console.log(response);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    
     // 부트스트랩 Collapse 객체를 생성 - 초기 상태는 화면에서 안보이는 상태
     const bsCollapse = new bootstrap.Collapse('div#replyToggleDiv', {toggle: false});
     
@@ -15,12 +30,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnToggleReply = document.querySelector('button#btnToggleReply');
     btnToggleReply.addEventListener('click', () => {
         bsCollapse.toggle();
-        const toggle = btnToggleReply.getAttribute('data-toggle');
+        
         if (toggleBtnIcon.alt === 'toggle-off') {
-             toggleBtnIcon.src = '/spring2/static/assets/icons/toggle2-on.svg';
+             toggleBtnIcon.src = '../static/assets/icons/toggle2-on.svg';
              toggleBtnIcon.alt = 'toggle-on';
+             
+             // 댓글 전체 목록을 서버에 요청하고, 응답이 오면 화면 갱신.
+             getRepliesWithPostId();
         } else {
-            toggleBtnIcon.src = '/spring2/static/assets/icons/toggle2-off.svg';
+            toggleBtnIcon.src = '../static/assets/icons/toggle2-off.svg';
             toggleBtnIcon.alt = 'toggle-off';
             replies.innerHTML = '';
         }
