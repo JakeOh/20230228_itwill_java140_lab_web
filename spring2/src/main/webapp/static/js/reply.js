@@ -5,6 +5,48 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+    // 댓글 개수 표시 영역(span)
+    const replyCountSpan = document.querySelector('span#replyCount');
+    // 댓글 목록 표시 영역(div)
+    const replies = document.querySelector('div#replies');
+    
+    // 댓글 목록 HTML을 작성하고 replies 영역에 추가하는 함수.
+    // argument data: Ajax 요청의 응답으로 전달받은 데이터.
+    const makeReplyElements = (data) => {
+        // 댓글 개수 업데이트
+        replyCountSpan.innerHTML = data.length; // 배열 길이(원소 개수)
+        
+        replies.innerHTML = ''; // <div>의 컨텐트를 지움.
+        
+        let htmlStr = '';
+        // for (let i = 0; i < data.length; i++) {}
+        // for (let x in data) {} -> 인덱스 iteration
+        for (let reply of data) {
+            console.log(reply);
+            
+            // Timestamp 타입 값을 날짜/시간 타입 문자열로 변환:
+            const modified = new Date(reply.modifiedTime).toLocaleString();
+            
+            // 댓글 1개를 표시할 HTML 코드:
+            htmlStr += `
+            <div class="card">
+                <div>
+                    <span class="d-none">${reply.id}</span>
+                    <span class="fw-bold">${reply.writer}</span>
+                    <span class="text-secondary">${modified}</span>
+                </div>
+                <div>
+                    ${reply.replyText}
+                </div>
+            </div>
+            `;
+            
+        }
+        
+        // 작성된 HTML 코드를 replies <div> 영역 안에 포함.
+        replies.innerHTML = htmlStr;
+    };
+    
     const getRepliesWithPostId = async () => {
         // 댓글 목록을 요청하기 위한 포스트 번호(아이디)
         const postId = document.querySelector('input#id').value;
@@ -15,6 +57,8 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const response = await axios.get(reqUrl);
             console.log(response);
+            // 댓글 개수 업데이트 & 댓글 목록 보여주기
+            makeReplyElements(response.data);
         } catch (error) {
             console.log(error);
         }
@@ -44,6 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
+    // 댓글 등록 버튼
     const btnAddReply = document.querySelector('button#btnAddReply');
     
     const createReply = (e) => {
@@ -65,7 +110,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 // 댓글 입력 창의 내용을 지움.
                 document.querySelector('textarea#replyText').value = '';
                 
-                // TODO: 댓글 목록을 새로 고침.
+                // 댓글 목록을 새로 고침.
+                getRepliesWithPostId();
                 
             }) // 성공 응답이 왔을 때 실행할 콜백 함수 등록
             .catch((error) => {
