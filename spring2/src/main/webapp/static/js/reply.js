@@ -10,6 +10,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // 댓글 목록 표시 영역(div)
     const replies = document.querySelector('div#replies');
     
+    // 댓글 삭제 버튼의 이벤트 리스너 (콜백) 함수
+    const deleteReply = (e) => {
+        // console.log(e);
+        console.log(e.target);
+    };
+    
+    // 댓글 수정 버튼의 이벤트 리스너 (콜백) 함수 - 댓글 수정 모달을 보여주는 함수
+    const showUpdateModal = (e) => {
+        // console.log(e);
+        console.log(e.target);
+    };
+    
     // 댓글 목록 HTML을 작성하고 replies 영역에 추가하는 함수.
     // argument data: Ajax 요청의 응답으로 전달받은 데이터.
     const makeReplyElements = (data) => {
@@ -38,6 +50,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div>
                     ${reply.replyText}
                 </div>
+                <div>
+                    <button class="btnDelete btn btn-outline-danger" data-id="${reply.id}">
+                        삭제
+                    </button>
+                    <button class="btnModify btn btn-outline-success" data-id="${reply.id}">
+                        수정
+                    </button>
+                </div>
             </div>
             `;
             
@@ -45,6 +65,19 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // 작성된 HTML 코드를 replies <div> 영역 안에 포함.
         replies.innerHTML = htmlStr;
+        
+        // 모든 삭제 버튼들을 찾아서 클릭 이벤트 리스너를 등록:
+        const deleteButtons = document.querySelectorAll('button.btnDelete');
+        for (let btn of deleteButtons) {
+            btn.addEventListener('click', deleteReply);
+        }
+        
+        // 모든 수정 버튼들을 찾아서 클릭 이벤트 리스너를 등록:
+        const modifyButtons = document.querySelectorAll('button.btnModify');
+        for (let btn of modifyButtons) {
+            btn.addEventListener('click', showUpdateModal);
+        }
+        
     };
     
     const getRepliesWithPostId = async () => {
