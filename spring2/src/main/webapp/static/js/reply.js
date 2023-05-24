@@ -8,17 +8,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // 부트스트랩 Collapse 객체를 생성 - 초기 상태는 화면에서 안보이는 상태
     const bsCollapse = new bootstrap.Collapse('div#replyToggleDiv', {toggle: false});
     
+    // 버튼 아이콘 이미지
+    const toggleBtnIcon = document.querySelector('img#toggleBtnIcon');
+    
     // 댓글 등록/목록 보이기/숨기기 토글 버튼에 이벤트 리스너를 등록
     const btnToggleReply = document.querySelector('button#btnToggleReply');
     btnToggleReply.addEventListener('click', () => {
         bsCollapse.toggle();
         const toggle = btnToggleReply.getAttribute('data-toggle');
-        if (toggle === 'toggle-off') {
-            btnToggleReply.innerHTML = '숨기기';
-            btnToggleReply.setAttribute('data-toggle', 'toggle-on');
+        if (toggleBtnIcon.alt === 'toggle-off') {
+             toggleBtnIcon.src = '/spring2/static/assets/icons/toggle2-on.svg';
+             toggleBtnIcon.alt = 'toggle-on';
         } else {
-            btnToggleReply.innerHTML = '보이기';
-            btnToggleReply.setAttribute('data-toggle', 'toggle-off');
+            toggleBtnIcon.src = '/spring2/static/assets/icons/toggle2-off.svg';
+            toggleBtnIcon.alt = 'toggle-off';
+            replies.innerHTML = '';
         }
     });
     
