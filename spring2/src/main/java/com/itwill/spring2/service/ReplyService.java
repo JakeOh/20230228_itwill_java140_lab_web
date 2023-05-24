@@ -33,4 +33,10 @@ public class ReplyService {
         return list.stream().map(ReplyReadDto::fromEntity).toList();
     }
 
+    public int delete(long id) {
+        log.info("delete(id={})", id);
+        
+        return replyRepository.delete(id);
+    }
+    
 }

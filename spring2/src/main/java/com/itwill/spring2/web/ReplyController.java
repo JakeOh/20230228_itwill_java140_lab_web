@@ -3,6 +3,7 @@ package com.itwill.spring2.web;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,6 +43,15 @@ public class ReplyController {
         log.info("# of replies = {}", list.size());
         
         return ResponseEntity.ok(list);
+    }
+    
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Integer> deleteReply(@PathVariable long id) {
+        log.info("deleteReply(id={})", id);
+        
+        int result = replyService.delete(id);
+        
+        return ResponseEntity.ok(result);
     }
     
 }

@@ -13,7 +13,27 @@ document.addEventListener('DOMContentLoaded', () => {
     // 댓글 삭제 버튼의 이벤트 리스너 (콜백) 함수
     const deleteReply = (e) => {
         // console.log(e);
-        console.log(e.target);
+        console.log(e.target); // e.target: 이벤트가 발생한 타겟. 여기서는 삭제 버튼.
+        
+        if (!confirm('정말 삭제할까요?')) {
+            return;
+        }
+        
+        // 삭제할 댓글 아이디:
+        const id = e.target.getAttribute('data-id');
+        // 삭제 요청 URL
+        const reqUrl = `/spring2/api/reply/${id}`;
+        // 삭제 요청을 Ajax 방식으로 보냄.
+        axios.delete(reqUrl)
+            .then((response) => {
+                console.log(response);
+                alert('댓글 삭제 성공');
+                getRepliesWithPostId(); // 댓글 목록 갱신.
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        
     };
     
     // 댓글 수정 버튼의 이벤트 리스너 (콜백) 함수 - 댓글 수정 모달을 보여주는 함수
