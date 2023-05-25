@@ -72,7 +72,9 @@ public class ReplyController {
             @RequestBody ReplyUpdateDto dto) {
         log.info("updateReply(id={}, dto={})", id, dto);
         
-        return null;
+        int result = replyService.update(id, dto);
+        
+        return ResponseEntity.ok(result);
     }
     
 }
