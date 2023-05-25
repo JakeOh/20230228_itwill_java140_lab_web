@@ -64,6 +64,27 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch((error) => console.log(error)); // 실패 응답이 왔을 때 실행할 콜백 등록.
     };
     
+    const updateReply = (e) => {
+        // 수정할 댓글 아이디
+        const id = modalInput.value;
+        // 수정할 댓글 내용
+        const replyText = modalTextarea.value;
+        // PUT 방식의 Ajax 요청을 보냄.
+        const reqUrl = `/spring2/api/reply/${id}`;
+        const data = { replyText }; // { key: value }, { replyText: replyText }
+        // Ajax 요청에 대한 성공/실패 콜백 등록.
+        axios.put(reqUrl, data)
+            .then((response) => {
+                alert(`댓글 업데이트 성공(${response.data})`);
+                getRepliesWithPostId(); // 댓글 목록 업데이트
+            })
+            .catch((error) => console.log(error))
+            .finally(() => modal.hide());
+    };
+    
+    // 모달에서 [수정 내용 저장] 버튼 이벤트 리스너 등록.
+    modalBtnUpdate.addEventListener('click', updateReply);
+    
     // 댓글 목록 HTML을 작성하고 replies 영역에 추가하는 함수.
     // argument data: Ajax 요청의 응답으로 전달받은 데이터.
     const makeReplyElements = (data) => {
