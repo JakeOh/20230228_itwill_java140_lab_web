@@ -16,6 +16,11 @@
         order by MODIFIED_TIME desc
     </select>
     
+    <select id="selectById"
+        resultType="com.itwill.spring2.domain.Reply">
+        select * from REPLIES where ID = #{id}
+    </select>
+    
     <insert id="insert">
         insert into REPLIES (POST_ID, REPLY_TEXT, WRITER, CREATED_TIME, MODIFIED_TIME)
         values (#{post_id}, #{reply_text}, #{writer}, systimestamp, systimestamp)

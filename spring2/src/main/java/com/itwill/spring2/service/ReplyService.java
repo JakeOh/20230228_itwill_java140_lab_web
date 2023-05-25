@@ -32,6 +32,14 @@ public class ReplyService {
         
         return list.stream().map(ReplyReadDto::fromEntity).toList();
     }
+    
+    public ReplyReadDto readById(long id) {
+        log.info("readById(id={})", id);
+        
+        Reply entity = replyRepository.selectById(id);
+        
+        return ReplyReadDto.fromEntity(entity);
+    }
 
     public int delete(long id) {
         log.info("delete(id={})", id);

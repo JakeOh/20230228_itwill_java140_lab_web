@@ -54,4 +54,14 @@ public class ReplyController {
         return ResponseEntity.ok(result);
     }
     
+    @GetMapping("/{id}")
+    public ResponseEntity<ReplyReadDto> readById(@PathVariable long id) {
+        log.info("readById(id={})", id);
+        
+        ReplyReadDto dto = replyService.readById(id);
+        log.info("dto={}", dto);
+        
+        return ResponseEntity.ok(dto);
+    }
+    
 }
