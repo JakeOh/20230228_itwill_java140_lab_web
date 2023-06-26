@@ -1,16 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Spring Boot</title>
-    </head>
-    <body>
-        <header>
-            <h1>Spring Boot Project</h1>
-        </header>
-        
-        <main>
-            <h1 th:text="|현재시간: ${now}|">현재 시간</h1>
-        </main>
-    </body>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout/base_layout}">
+
+<main layout:fragment="main">
+    <h1 th:text="|현재시간: ${now}|">현재 시간</h1>
+</main>
+
 </html>
