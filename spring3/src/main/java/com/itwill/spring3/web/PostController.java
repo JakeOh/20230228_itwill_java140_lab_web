@@ -13,7 +13,7 @@ public class PostController {
     
     @GetMapping
     public String read() {
-        log.info("post()");
+        log.info("read()");
         
         // TODO: 포스트 목록 검색
         
@@ -23,6 +23,8 @@ public class PostController {
     @GetMapping("/create")
     public void create() {
         log.info("creat() GET");
+        
+        // 리턴값이 없는 경우 view의 이름은 요청 주소와 같음.
     }
 
 }
