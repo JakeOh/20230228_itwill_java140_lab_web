@@ -2,42 +2,56 @@
 <html xmlns:th="http://www.thymeleaf.org"
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-    <meta charset="UTF-8" />
-    <title>Spring Boot</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
-        rel="stylesheet" 
-        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" 
-        crossorigin="anonymous" />
+<meta charset="UTF-8" />
+<title>Spring Boot</title>
+<link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+    crossorigin="anonymous" />
 </head>
 <body>
     <div class="container-fluid">
         <header class="my-2 p-5 text-bg-dark text-center">
             <h1>Spring Boot App</h1>
         </header>
-        
-        <nav class="navbar">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link">포스트</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link">새 포스트</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link">로그인</a>
-                </li>
-            </ul>
+
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" th:href="@{/}">메인</a>
+                <button class="navbar-toggler" type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" th:href="@{/post}">포스트</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/post/create}">새 포스트</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#">로그인</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </nav>
-        
+
         <!-- main 컨텐트가 삽입될 위치 -->
         <th:block layout:fragment="main"></th:block>
-        
+
     </div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" 
-        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" 
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>
-    
+
     <!-- 자바스크립 파일 추가할 위치 -->
     <th:block layout:fragment="myscripts"></th:block>
 </body>
