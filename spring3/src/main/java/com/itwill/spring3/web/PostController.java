@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.itwill.spring3.dto.PostCreateDto;
 import com.itwill.spring3.repository.post.Post;
 import com.itwill.spring3.service.PostService;
 
@@ -39,6 +41,17 @@ public class PostController {
         log.info("creat() GET");
         
         // 리턴값이 없는 경우 view의 이름은 요청 주소와 같음.
+    }
+    
+    @PostMapping("/create")
+    public String create(PostCreateDto dto) {
+        log.info("create(dto={}) POST", dto);
+        
+        // form에서 submit(제출)된 내용을 DB 테이블에 insert
+        postService.create(dto);
+        
+        // DB 테이블 insert 후 포스트 목록 페이지로 redirect 이동.
+        return "redirect:/post";
     }
 
 }
