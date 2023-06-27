@@ -4,7 +4,31 @@
     layout:decorate="~{layout/base_layout}">
     
     <main layout:fragment="main">
-        <h1>포스트 목록 페이지</h1>
+        <div class="my-2 card">
+            <div class="card-header text-center">
+                <h1>포스트 목록 페이지</h1>
+            </div>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>번호</th>
+                            <th>제목</th>
+                            <th>작성자</th>
+                            <th>수정시간</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="post : ${posts}">
+                            <td th:text="${post.id}"></td>
+                            <td th:text="${post.title}"></td>
+                            <td th:text="${post.author}"></td>
+                            <td th:text="${ #temporals.format(post.modifiedTime, 'yyyy-MM-dd HH:mm:ss') }"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </main>
     
 </html>
