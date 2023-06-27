@@ -20,7 +20,7 @@ import lombok.Getter;
 //-> 상속하는 하위 클래스는 BaseTimeEntity가 정의하는 컬럼들을 갖게 됨.
 
 @EntityListeners(AuditingEntityListener.class)
-//-> main 메서드를 갖고 있는 메인 클래스에서 JPA Auditing 기능이 활성화되어 있는 경우에
+//-> main 메서드를 갖고 있는 메인 클래스(Spring3Application)에서 JPA Auditing 기능이 활성화되어 있는 경우에
 //-> 엔터티가 삽입/수정되는 시간이 자동으로 기록되도록 하기 위해서.
 public class BaseTimeEntity {
     
@@ -30,6 +30,8 @@ public class BaseTimeEntity {
     
     @CreatedDate // insert될 때의 시간이 자동으로 기록됨.
     private LocalDateTime createdTime;
+    //-> 엔터티 클래스의 필드 이름은 자바의 관습(camel 표기법)으로 작성.
+    //-> 테이블의 컬럼 이름은 데이터베이스의 관습(snake 표기법)을 따름.
     
     @LastModifiedDate // update될 때의 시간이 자동을 기록됨.
     private LocalDateTime modifiedTime;

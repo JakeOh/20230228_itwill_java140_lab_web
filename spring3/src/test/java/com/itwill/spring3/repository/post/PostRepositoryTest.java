@@ -17,7 +17,7 @@ public class PostRepositoryTest {
     
     @Test
     public void testFindAll() {
-        List<Post> list = postRepository.findByOrderByIdDesc();
+        List<Post> list = postRepository.findByOrderByIdDesc(); // postRepository.findAll();
         for (Post p : list) {
             log.info(p.toString());
         }
