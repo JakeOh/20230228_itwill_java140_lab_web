@@ -40,5 +40,11 @@ public class PostService {
         
         return entity;
     }
+    
+    public Post read(Long id) {
+        log.info("read(id={})", id);
+        
+        return postRepository.findById(id).orElseThrow();
+    }
 
 }

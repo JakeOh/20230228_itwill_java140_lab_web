@@ -22,7 +22,7 @@
                         <tr th:each="post : ${posts}">
                             <td th:text="${post.id}"></td>
                             <td>
-                                <a th:href="@{/post/details?id={id} (id = ${post.id}) }"
+                                <a th:href="@{ /post/details?id={id} (id = ${post.id}) }"
                                     th:text="${post.title}"></a>
                             </td>
                             <td th:text="${post.author}"></td>

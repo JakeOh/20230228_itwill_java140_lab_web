@@ -53,5 +53,17 @@ public class PostController {
         // DB 테이블 insert 후 포스트 목록 페이지로 redirect 이동.
         return "redirect:/post";
     }
+    
+    @GetMapping("/details")
+    public void read(Long id, Model model) {
+        log.info("read(id={})", id);
+        
+        // POSTS 테이블에서 id에 해당하는 포스트를 검색.
+        Post post = postService.read(id);
+        
+        // 결과를 model에 저장 -> 뷰로 전달됨.
+        model.addAttribute("post", post);
+        
+    }
 
 }
