@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.itwill.spring3.dto.PostCreateDto;
+import com.itwill.spring3.dto.PostSearchDto;
 import com.itwill.spring3.dto.PostUpdateDto;
 import com.itwill.spring3.repository.post.Post;
 import com.itwill.spring3.repository.post.PostRepository;
@@ -68,6 +69,29 @@ public class PostService {
         Post entity = postRepository.findById(dto.getId()).orElseThrow(); // (2)
         entity.update(dto); // (3)
         
+    }
+    
+    @Transactional(readOnly = true)
+    public List<Post> search(PostSearchDto dto) {
+        log.info("search(dto={})", dto);
+        
+        List<Post> list = null;
+        switch (dto.getType()) {
+        case "t":
+            list = postRepository.findByTitleContainsIgnoreCaseOrderByIdDesc(dto.getKeyword());
+            break;
+        case "c":
+            list = postRepository.findByContentContainsIgnoreCaseOrderByIdDesc(dto.getKeyword());
+            break;
+        case "tc":
+            list = postRepository.searchByKeyword(dto.getKeyword());
+            break;
+        case "a":
+            list = postRepository.findByAuthorContainsIgnoreCaseOrderByIdDesc(dto.getKeyword());
+            break;
+        }
+        
+        return list;
     }
 
 }

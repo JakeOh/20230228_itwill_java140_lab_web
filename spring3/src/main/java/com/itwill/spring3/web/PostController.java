@@ -93,10 +93,14 @@ public class PostController {
     }
     
     @GetMapping("/search")
-    public String search(PostSearchDto dto) {
+    public String search(PostSearchDto dto, Model model) {
         log.info("search(dto={})", dto);
         
-        // TODO: postService의 검색 기능 호출:
+        // postService의 검색 기능 호출:
+        List<Post> list = postService.search(dto);
+
+        // 검색 결과를 Model에 저장해서 뷰로 전달:
+        model.addAttribute("posts", list);
         
         return "/post/read";
     }
