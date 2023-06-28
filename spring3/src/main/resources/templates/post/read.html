@@ -31,6 +31,28 @@
                     </tbody>
                 </table>
             </div>
+            <div class="card-footer">
+                <form method="get" th:action="@{/post/search}">
+                    <div class="row">
+                        <div class="col-3">
+                            <select class="form-control" name="type">
+                                <option value="t">제목</option>
+                                <option value="c">내용</option>
+                                <option value="tc">제목 + 내용</option>
+                                <option value="a">작성자</option>
+                            </select>
+                        </div>
+                        <div class="col-8">
+                            <input class="form-control" name="keyword"
+                                type="text" placeholder="검색어 입력" required />
+                        </div>
+                        <div class="col-1">
+                            <input class="form-control btn btn-outline-dark" 
+                                type="submit" value="검색" />
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </main>
     
