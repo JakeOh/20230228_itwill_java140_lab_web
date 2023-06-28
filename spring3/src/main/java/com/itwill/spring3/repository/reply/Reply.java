@@ -5,6 +5,7 @@ import com.itwill.spring3.repository.post.Post;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -17,7 +18,7 @@ import lombok.ToString;
 
 @NoArgsConstructor
 @Getter
-@ToString
+@ToString(exclude = {"post"})
 @Entity
 @Table(name = "REPLIES")
 @SequenceGenerator(name = "REPLIES_SEQ_GEN", sequenceName = "REPLIES_SEQ", allocationSize = 1)
@@ -27,7 +28,7 @@ public class Reply extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "REPLIES_SEQ_GEN")
     private Long id; // Primary Key
     
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY) // EAGER(기본값): 즉시로딩, LAZY: 지연로딩.
     //-> 여러 개(Many)의 댓글이 한 개(One)의 포스트에 달려 있을 수 있음.
     private Post post; // Foreign Key, 관계를 맺고 있는 엔터티.
     
