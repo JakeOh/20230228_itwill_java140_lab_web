@@ -9,8 +9,22 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const btnUpdate = document.querySelector('#btnUpdate');
     btnUpdate.addEventListener('click', (e) => {
-        alert('업데이트');
-        // TODO: 포스트 업데이트
+        const title = document.querySelector('#title').value;
+        const content = document.querySelector('#content').value;
+        if (title === '' || content === '') {
+            alert('제목과 내용은 반드시 입력...');
+            return;
+        }
+        
+        const result = confirm('변경된 내용을 업데이트할까요?')
+        if (!result) {
+            return;
+        }
+        
+        postModifyForm.action = '/post/update';
+        postModifyForm.method = 'post';
+        postModifyForm.submit();
+        
     });
     
     const btnDelete = document.querySelector('#btnDelete');

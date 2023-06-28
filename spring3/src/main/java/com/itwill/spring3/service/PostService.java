@@ -3,8 +3,10 @@ package com.itwill.spring3.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.itwill.spring3.dto.PostCreateDto;
+import com.itwill.spring3.dto.PostUpdateDto;
 import com.itwill.spring3.repository.post.Post;
 import com.itwill.spring3.repository.post.PostRepository;
 
@@ -20,6 +22,7 @@ public class PostService {
     private final PostRepository postRepository;
     
     // DB POSTS 테이블에서 전체 검색한 결과를 리턴: 
+    @Transactional(readOnly = true)
     public List<Post> read() {
         log.info("read()");
         
@@ -41,6 +44,7 @@ public class PostService {
         return entity;
     }
     
+    @Transactional(readOnly = true)
     public Post read(Long id) {
         log.info("read(id={})", id);
         
@@ -51,6 +55,19 @@ public class PostService {
         log.info("delete(id={})", id);
         
         postRepository.deleteById(id);
+    }
+    
+    @Transactional // (1)
+    public void update(PostUpdateDto dto) {
+        log.info("update(dto={})", dto);
+        
+        // (1) 메서드에 @Transactional 애너테이션을 설정하고,
+        // (2) DB에서 엔터티를 검색하고, 
+        // (3) 검색한 엔터티를 수정하면,
+        // 트랙잭션이 끝나는 시점에 DB update가 자동으로 수행됨!
+        Post entity = postRepository.findById(dto.getId()).orElseThrow(); // (2)
+        entity.update(dto); // (3)
+        
     }
 
 }

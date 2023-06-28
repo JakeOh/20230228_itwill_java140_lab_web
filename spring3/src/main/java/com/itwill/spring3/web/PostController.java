@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.itwill.spring3.dto.PostCreateDto;
+import com.itwill.spring3.dto.PostUpdateDto;
 import com.itwill.spring3.repository.post.Post;
 import com.itwill.spring3.service.PostService;
 
@@ -78,6 +79,16 @@ public class PostController {
         postService.delete(id);
         
         return "redirect:/post";
+    }
+    
+    @PostMapping("/update")
+    public String update(PostUpdateDto dto) {
+        log.info("update(dto={})", dto);
+        
+        // 포스트 업데이트 서비스 호출:
+        postService.update(dto);
+        
+        return "redirect:/post/details?id=" + dto.getId();
     }
 
 }
