@@ -46,5 +46,11 @@ public class PostService {
         
         return postRepository.findById(id).orElseThrow();
     }
+    
+    public void delete(Long id) {
+        log.info("delete(id={})", id);
+        
+        postRepository.deleteById(id);
+    }
 
 }

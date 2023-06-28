@@ -7,7 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.itwill.spring3.dto.PostCreateDto;
 import com.itwill.spring3.repository.post.Post;
@@ -69,6 +68,16 @@ public class PostController {
         // 컨트롤러 메서드의 리턴값이 없는 경우(void인 경우),
         // 뷰의 이름은 요청 주소와 같다!
         // details -> details.html, modify -> modify.html
+    }
+    
+    @PostMapping("/delete")
+    public String delete(Long id) {
+        log.info("delete(id={})", id);
+        
+        // postService를 이용해서 DB 테이블에서 포스트를 삭제하는 서비스 호출:
+        postService.delete(id);
+        
+        return "redirect:/post";
     }
 
 }

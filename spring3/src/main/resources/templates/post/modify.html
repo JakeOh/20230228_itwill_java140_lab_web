@@ -12,17 +12,17 @@
                 <form id="postModifyForm">
                     <div>
                         <label class="form-label" for="id">번호</label>
-                        <input class="form-control"
+                        <input class="form-control" name="id"
                             id="id" th:value="${post.id}" readonly />
                     </div>
                     <div>
                         <label class="form-label" for="title">제목</label>
-                        <input class="form-control"
+                        <input class="form-control" name="title"
                             id="title" th:value="${post.title}" />
                     </div>
                     <div>
                         <label class="form-label" for="content">내용</label>
-                        <textarea class="form-control"
+                        <textarea class="form-control" name="content"
                             id="content" th:text="${post.content}"></textarea>
                     </div>
                     <div>
