@@ -82,7 +82,24 @@ document.addEventListener('DOMContentLoaded', () => {
         // TODO: 댓글 작성자는 admin. 나중에 로그인한 사용자 아이디로 변경.
         const writer = 'admin';
         
-        alert(`${postId}, ${replyText}, ${writer}`);
+        // 댓글 내용이 비어 있으면 경고창을 보여주고 종료.
+        if (replyText === '') {
+            alert('댓글 내용을 입력하세요.');
+            return;
+        }
+        
+        // Ajax 요청에서 보낼 데이터.
+        const data = {postId, replyText, writer};
+        // Ajax 요청을 보낼 URL.
+        const reqUrl = '/api/reply';
+        
+        axios
+            .post(reqUrl, data) // Ajax POST 방식 요청을 보냄.
+            .then((response) => {
+                console.log(response);
+            }) // 성공 응답(response)일 때 실행할 콜백 등록.
+            .catch((error) => console.log(error)); // 실패(error)일 때 실행할 콜백 등록. 
+        
     });
     
 });

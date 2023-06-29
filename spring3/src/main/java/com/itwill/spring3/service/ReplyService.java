@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.itwill.spring3.dto.reply.ReplyCreateDto;
 import com.itwill.spring3.repository.post.Post;
 import com.itwill.spring3.repository.post.PostRepository;
 import com.itwill.spring3.repository.reply.Reply;
@@ -20,6 +21,25 @@ public class ReplyService {
     
     private final ReplyRepository replyRepository;
     private final PostRepository postRepository;
+    
+    public Reply create(ReplyCreateDto dto) {
+        log.info("create(dto={})", dto);
+        
+        // 1. Post 엔터티 검색
+        Post post = postRepository.findById(dto.getPostId()).orElseThrow();
+        
+        // 2. ReplyCreateDto 객체를 Reply 엔터티 객체로 변환.
+        Reply entity = Reply.builder()
+                .post(post)
+                .replyText(dto.getReplyText())
+                .writer(dto.getWriter())
+                .build();
+        
+        // 3. DB replies 테이블에 insert
+        replyRepository.save(entity);
+        
+        return entity;
+    }
     
     @Transactional(readOnly = true)
     public List<Reply> read(Long postId) {
