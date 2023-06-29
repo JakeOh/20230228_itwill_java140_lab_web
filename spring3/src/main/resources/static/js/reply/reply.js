@@ -42,11 +42,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log(response);
                 
                 // 댓글 목록 새로 고침
-                const postId = document.querySelector('input#id').value;
-                getRepliesWithPostId(postId);
+                getRepliesWithPostId();
                 
             }) // 성공 응답일 때 실행할 콜백 등록
             .catch((error) => console.log(error)); // 실패 응답일 때 실행할 콜백 등록
+        
+    };
+    
+    const updateReply = (e) => {
+        //console.log(e.target);
+        const replyId = e.target.getAttribute('data-id');
+        const textAreaId = `textarea#replyText_${replyId}`;
+        //console.log(document.querySelector(textAreaId));
+        
+        // TODO: Ajax PUT 요청
         
     };
     
@@ -69,9 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span class="d-none">${reply.id}</span>
                     <span class="fw-bold">${reply.writer}</span>
                 </div>
-                <div>
-                    ${reply.replyText}
-                </div>
+                <textarea id="replyText_${reply.id}">${reply.replyText}</textarea>
                 <div>
                     <button class="btnDelete btn btn-outline-danger" data-id="${reply.id}">삭제</button>
                     <button class="btnModify btn btn-outline-primary" data-id="${reply.id}">수정</button>
@@ -87,6 +94,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const btnDeletes = document.querySelectorAll('button.btnDelete');
         for (let btn of btnDeletes) {
             btn.addEventListener('click', deleteReply);
+        }
+        
+        // 모든 댓글 수정 버튼들에게 이벤트 리스너를 등록.
+        const btnModifies = document.querySelectorAll('button.btnModify');
+        for (let btn of btnModifies) {
+            btn.addEventListener('click', updateReply);
         }
         
     };
@@ -134,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log(response);
                 
                 // 댓글 목록 새로고침
-                getRepliesWithPostId(postId);
+                getRepliesWithPostId();
                 // 댓글 입력한 내용을 지움.
                 document.querySelector('textarea#replyText').value = '';
                 
