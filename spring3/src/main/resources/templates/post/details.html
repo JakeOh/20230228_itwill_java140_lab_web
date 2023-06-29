@@ -66,11 +66,15 @@
                         <button class="form-control btn btn-outline-success">등록</button>
                     </div>
                 </div>
+                
+                <!-- 댓글 목록을 보여줄 영역 -->
+                <div class="my-2 row" id="replies"></div>
             </div>
         </div>
     </main>
     
     <th:block layout:fragment="myscripts">
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="/js/reply/reply.js"></script>
     </th:block>
     

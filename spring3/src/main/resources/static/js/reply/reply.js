@@ -13,9 +13,27 @@ document.addEventListener('DOMContentLoaded', () => {
         // console.log(e.target.innerText);
         if (e.target.innerText === '보이기') {
             e.target.innerText = '숨기기';
+            
+            // 댓글 목록 불러오기:
+            getRepliesWithPostId();
         } else {
             e.target.innerText = '보이기';
         }
     });
+    
+    // 포스트 번호에 달려 있는 댓글 목록을 (Ajax 요청으로) 가져오는 함수:
+    const getRepliesWithPostId = async () => {
+        const postId = document.querySelector('input#id').value; // 포스트 아이디(번호)
+        const reqUrl = `/api/reply/all/${postId}`; // Ajax 요청 주소
+        
+        // Ajax 요청을 보내고 응답을 기다림.
+        try {
+            const response = await axios.get(reqUrl);
+            console.log(response);
+            
+        } catch (error) {
+            console.log(error);
+        }
+    };
     
 });
