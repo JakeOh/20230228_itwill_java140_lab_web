@@ -25,5 +25,11 @@ public class ReplyService {
         
         return list;
     }
+    
+    public Long countByPost(Post post) {
+        log.info("countByPost(post={})", post);
+        
+        return replyRepository.countByPost(post);
+    }
 
 }

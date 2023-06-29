@@ -71,8 +71,8 @@ public class PostController {
         model.addAttribute("post", post);
         
         // REPLIES 테이블에서 해당 포스트에 달린 댓글 개수를 검색.
-        List<Reply> replyList = replyService.read(post);
-        model.addAttribute("replyCount", replyList.size());
+        long count = replyService.countByPost(post);
+        model.addAttribute("replyCount", count);
         
         // 컨트롤러 메서드의 리턴값이 없는 경우(void인 경우),
         // 뷰의 이름은 요청 주소와 같다!
