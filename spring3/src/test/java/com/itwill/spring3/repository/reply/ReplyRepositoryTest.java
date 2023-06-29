@@ -40,7 +40,7 @@ public class ReplyRepositoryTest {
         Post post = postRepository.findById(1L).orElseThrow();
         
         // 해당 포스트에 달린 모든 댓글 검색:
-        List<Reply> list = replyRepository.findByPost(post);
+        List<Reply> list = replyRepository.findByPostOrderByIdDesc(post);
         for (Reply r : list) {
             log.info(r.toString());
         }
