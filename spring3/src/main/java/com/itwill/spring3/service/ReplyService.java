@@ -29,7 +29,7 @@ public class ReplyService {
         Post post = postRepository.findById(postId).orElseThrow();
         
         // 2. 찾은 Post에 달려 있는 댓글 목록을 검색.
-        List<Reply> list = replyRepository.findByPost(post);
+        List<Reply> list = replyRepository.findByPostOrderByIdDesc(post);
         
         return list;
     }
@@ -38,7 +38,7 @@ public class ReplyService {
     public List<Reply> read(Post post) {
         log.info("read(post={})", post);
         
-        List<Reply> list = replyRepository.findByPost(post);
+        List<Reply> list = replyRepository.findByPostOrderByIdDesc(post);
         
         return list;
     }

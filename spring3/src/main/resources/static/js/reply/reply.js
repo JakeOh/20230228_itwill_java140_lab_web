@@ -21,6 +21,41 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
+    const makeReplyElements = (data) => {
+        // 댓글 개수를 배열(data)의 원소 개수로 업데이트.
+        document.querySelector('span#replyCount').innerText = data.length;
+        
+        // 댓글 목록을 삽입할 div 요소를 찾음.
+        const replies = document.querySelector('div#replies');
+        
+        // div 안에 작성된 기존 내용은 삭제.
+        replies.innerHTML = '';
+        
+        // div 안에 삽입할 HTML 코드 초기화.
+        let htmlStr = '';
+        for (let reply of data) {
+            htmlStr += `
+            <div class="card my-2">
+                <div>
+                    <span class="d-none">${reply.id}</span>
+                    <span class="fw-bold">${reply.writer}</span>
+                </div>
+                <div>
+                    ${reply.replyText}
+                </div>
+                <div>
+                    <button class="btnDelete btn btn-outline-danger">삭제</button>
+                    <button class="btnModify btn btn-outline-primary">수정</button>
+                </div>
+            </div>
+            `;
+        }
+        
+        // 작성된 HTML 문자열을 div 요소의 innerHTML로 설정.
+        replies.innerHTML = htmlStr;
+        
+    };
+    
     // 포스트 번호에 달려 있는 댓글 목록을 (Ajax 요청으로) 가져오는 함수:
     const getRepliesWithPostId = async () => {
         const postId = document.querySelector('input#id').value; // 포스트 아이디(번호)
@@ -29,11 +64,25 @@ document.addEventListener('DOMContentLoaded', () => {
         // Ajax 요청을 보내고 응답을 기다림.
         try {
             const response = await axios.get(reqUrl);
-            console.log(response);
+            //console.log(response);
+            makeReplyElements(response.data);
             
         } catch (error) {
             console.log(error);
         }
     };
+    
+    // 댓글 등록 버튼을 찾고, 이벤트 리스너 등록.
+    const btnReplyCreate = document.querySelector('button#btnReplyCreate');
+    btnReplyCreate.addEventListener('click', () => {
+        // 포스트 아이디 찾음.
+        const postId = document.querySelector('input#id').value;
+        // 댓글 내용 찾음.
+        const replyText = document.querySelector('textarea#replyText').value;
+        // TODO: 댓글 작성자는 admin. 나중에 로그인한 사용자 아이디로 변경.
+        const writer = 'admin';
+        
+        alert(`${postId}, ${replyText}, ${writer}`);
+    });
     
 });
