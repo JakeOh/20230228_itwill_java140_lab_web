@@ -12,6 +12,6 @@ public interface ReplyRepository extends JpaRepository<Reply, Long> {
     List<Reply> findByPost(Post post);
     
     // Post에 달린 댓글 개수:
-    Long countByPost(Post post);
+    long countByPost(Post post);
     
 }
