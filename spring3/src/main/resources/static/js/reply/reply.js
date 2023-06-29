@@ -21,6 +21,35 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
+    // 댓글 삭제 버튼들의 클릭을 처리하는 이벤트 리스너 콜백:
+    const deleteReply = (e) => {
+        // console.log(e.target);
+        
+        const result = confirm('정말 삭제할까요?');
+        if (!result) {
+            return;
+        }
+        
+        // 삭제할 댓글 아이디
+        const id = e.target.getAttribute('data-id');
+        
+        // Ajax DELETE 방식 요청 주소
+        const reqUrl = `/api/reply/${id}`;
+        
+        axios
+            .delete(reqUrl) // Ajax DELETE 요청을 보냄
+            .then((response) => {
+                console.log(response);
+                
+                // 댓글 목록 새로 고침
+                const postId = document.querySelector('input#id').value;
+                getRepliesWithPostId(postId);
+                
+            }) // 성공 응답일 때 실행할 콜백 등록
+            .catch((error) => console.log(error)); // 실패 응답일 때 실행할 콜백 등록
+        
+    };
+    
     const makeReplyElements = (data) => {
         // 댓글 개수를 배열(data)의 원소 개수로 업데이트.
         document.querySelector('span#replyCount').innerText = data.length;
@@ -44,8 +73,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     ${reply.replyText}
                 </div>
                 <div>
-                    <button class="btnDelete btn btn-outline-danger">삭제</button>
-                    <button class="btnModify btn btn-outline-primary">수정</button>
+                    <button class="btnDelete btn btn-outline-danger" data-id="${reply.id}">삭제</button>
+                    <button class="btnModify btn btn-outline-primary" data-id="${reply.id}">수정</button>
                 </div>
             </div>
             `;
@@ -53,6 +82,12 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // 작성된 HTML 문자열을 div 요소의 innerHTML로 설정.
         replies.innerHTML = htmlStr;
+        
+        // 모든 댓글 삭제 버튼들에게 이벤트 리스너를 등록.
+        const btnDeletes = document.querySelectorAll('button.btnDelete');
+        for (let btn of btnDeletes) {
+            btn.addEventListener('click', deleteReply);
+        }
         
     };
     
@@ -97,6 +132,12 @@ document.addEventListener('DOMContentLoaded', () => {
             .post(reqUrl, data) // Ajax POST 방식 요청을 보냄.
             .then((response) => {
                 console.log(response);
+                
+                // 댓글 목록 새로고침
+                getRepliesWithPostId(postId);
+                // 댓글 입력한 내용을 지움.
+                document.querySelector('textarea#replyText').value = '';
+                
             }) // 성공 응답(response)일 때 실행할 콜백 등록.
             .catch((error) => console.log(error)); // 실패(error)일 때 실행할 콜백 등록. 
         

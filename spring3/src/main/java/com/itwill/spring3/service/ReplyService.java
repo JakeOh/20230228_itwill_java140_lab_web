@@ -22,6 +22,13 @@ public class ReplyService {
     private final ReplyRepository replyRepository;
     private final PostRepository postRepository;
     
+    public void delete(long id) {
+        log.info("delete(id={})", id);
+        
+        // DB replies 테이블에서 ID(고유키)로 엔터티 삭제하기:
+        replyRepository.deleteById(id);
+    }
+    
     public Reply create(ReplyCreateDto dto) {
         log.info("create(dto={})", dto);
         
