@@ -49,13 +49,30 @@ document.addEventListener('DOMContentLoaded', () => {
         
     };
     
+    // 댓글 업데이트 버튼들의 클릭을 처리하는 이벤트 리스너 콜백:
     const updateReply = (e) => {
         //console.log(e.target);
-        const replyId = e.target.getAttribute('data-id');
-        const textAreaId = `textarea#replyText_${replyId}`;
+        const replyId = e.target.getAttribute('data-id'); // 수정할 댓글 아이디
+        
+        const textAreaId = `textarea#replyText_${replyId}`; // 댓글 입력 textarea 아이디
         //console.log(document.querySelector(textAreaId));
         
-        // TODO: Ajax PUT 요청
+        // 수정할 댓글 내용
+        const replyText = document.querySelector(textAreaId).value;
+        if (replyText === '') { // 댓글 내용이 비어있으면
+            alert('수정할 댓글 내용을 입력하세요.');
+            return;
+        }
+        
+        const reqUrl = `/api/reply/${replyId}`; // 요청 주소
+        const data = { replyText }; // {replyText: replyText}, 요청 데이터(수정할 댓글 내용)
+        axios
+            .put(reqUrl, data) // PUT 방식의 Ajax 요청을 보냄.
+            .then((response) => {
+                console.log(response);
+                // TODO:
+            }) // 성공 응답일 때 동작할 콜백을 등록.
+            .catch((error) => console.log(error)); // 에러 응답일 때 동작할 콜백을 등록.
         
     };
     
