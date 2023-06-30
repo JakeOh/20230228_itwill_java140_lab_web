@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.itwill.spring3.dto.PostCreateDto;
-import com.itwill.spring3.dto.PostSearchDto;
-import com.itwill.spring3.dto.PostUpdateDto;
+import com.itwill.spring3.dto.post.PostCreateDto;
+import com.itwill.spring3.dto.post.PostSearchDto;
+import com.itwill.spring3.dto.post.PostUpdateDto;
 import com.itwill.spring3.repository.post.Post;
 import com.itwill.spring3.repository.post.PostRepository;
 

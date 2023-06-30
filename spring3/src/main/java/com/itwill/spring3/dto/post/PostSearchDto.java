@@ -1,4 +1,4 @@
-package com.itwill.spring3.dto;
+package com.itwill.spring3.dto.post;
 
 import lombok.Data;
 

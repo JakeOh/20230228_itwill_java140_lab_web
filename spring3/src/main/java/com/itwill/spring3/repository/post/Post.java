@@ -1,6 +1,6 @@
 package com.itwill.spring3.repository.post;
 
-import com.itwill.spring3.dto.PostUpdateDto;
+import com.itwill.spring3.dto.post.PostUpdateDto;
 import com.itwill.spring3.repository.BaseTimeEntity;
 
 import jakarta.persistence.Column;

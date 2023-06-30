@@ -1,4 +1,4 @@
-package com.itwill.spring3.dto;
+package com.itwill.spring3.dto.post;
 
 import com.itwill.spring3.repository.post.Post;
 
