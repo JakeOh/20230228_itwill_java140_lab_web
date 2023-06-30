@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.itwill.spring3.dto.reply.ReplyCreateDto;
+import com.itwill.spring3.dto.reply.ReplyUpdateDto;
 import com.itwill.spring3.repository.reply.Reply;
 import com.itwill.spring3.service.ReplyService;
 
@@ -57,10 +58,13 @@ public class ReplyRestController {
     }
     
     @PutMapping("/{id}")
-    public ResponseEntity<String> update(@PathVariable long id) {
-        log.info("update(id={})", id);
+    public ResponseEntity<String> update(
+            @PathVariable long id,
+            @RequestBody ReplyUpdateDto dto) {
+        log.info("update(id={}, dto={})", id, dto);
         
-        // TODO:
+        // DB 업데이트 서비스 메서드 호출
+        replyService.update(id, dto);
         
         return ResponseEntity.ok("Success");
     }

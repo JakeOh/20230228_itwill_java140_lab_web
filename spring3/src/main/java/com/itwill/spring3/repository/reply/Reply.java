@@ -43,4 +43,11 @@ public class Reply extends BaseTimeEntity {
     @Column(nullable = false)
     private String writer; // 댓글 작성자
 
+    // 댓글 내용을 수정하고, 수정된 엔터티를 리턴하는 메서드:
+    public Reply update(String replyText) {
+        this.replyText = replyText;
+        
+        return this;
+    }
+    
 }
