@@ -3,6 +3,7 @@ package com.itwill.spring3.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer;
@@ -14,7 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
-@EnableWebSecurity
+@EnableMethodSecurity
 @Configuration // 스프링 컨테이너에서 빈(bean)으로 생성, 관리 - 필요한 곳에 의존성 주입.
 public class SecurityConfig {
     
@@ -54,7 +55,7 @@ public class SecurityConfig {
     
     // Security Filter 설정 bean:
     // 로그인/로그아웃 설정
-    // 로그인 페이지 설정
+    // 로그인 페이지 설정, 로그아웃 이후 이동할 페이지.
     // 페이지 접근 권한 - 로그인해야만 접근 가능한 페이지, 로그인 없이 접근 가능한 페이지.
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -65,6 +66,9 @@ public class SecurityConfig {
         
         // 로그인 페이지 설정 - 스프링에서 제공하는 기본 로그인 페이지를 사용. 
         http.formLogin(Customizer.withDefaults());
+        
+        // 로그아웃 이후 이동할 페이지 - 메인 페이지
+        http.logout((logout) -> logout.logoutSuccessUrl("/"));
         
         // 페이지 접근 권한 설정
         /*
@@ -81,7 +85,7 @@ public class SecurityConfig {
         */
         // 단점: 새로운 요청 경로, 컨트롤러를 작성할 때마다 Config 자바 코드를 수정해야 함.
         //-> 컨트롤러 메서드를 작성할 때 애너테이션을 사용해서 접근 권한을 설정할 수도 있음.
-        // (1) SecurityConfig 클래스에서 @EnableGlobalMethodSecurity 애너테이션 설정
+        // (1) SecurityConfig 클래스에서 @EnableMethodSecurity 애너테이션 설정.
         // (2) 각각의 컨트롤러 메서드에서 @PreAuthorize 또는 @PostAuthorize 애너테이션을 사용.
         
         return http.build();

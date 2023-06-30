@@ -3,6 +3,7 @@ package com.itwill.spring3.web;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,6 +29,7 @@ public class ReplyRestController {
     
     private final ReplyService replyService;
     
+    @PreAuthorize("hasRole('USER')")
     @GetMapping("/all/{postId}")
     public ResponseEntity<List<Reply>> all(@PathVariable long postId) {
         log.info("all(postId={})", postId);
@@ -38,6 +40,7 @@ public class ReplyRestController {
         return ResponseEntity.ok(list);
     }
     
+    @PreAuthorize("hasRole('USER')")
     @PostMapping
     public ResponseEntity<Reply> create(@RequestBody ReplyCreateDto dto) {
         log.info("create(dto={})", dto);
@@ -48,6 +51,7 @@ public class ReplyRestController {
         return ResponseEntity.ok(reply);
     }
     
+    @PreAuthorize("hasRole('USER')")
     @DeleteMapping("/{id}")
     public ResponseEntity<String> delete(@PathVariable long id) {
         log.info("delete(id={})", id);
@@ -57,6 +61,7 @@ public class ReplyRestController {
         return ResponseEntity.ok("Success");
     }
     
+    @PreAuthorize("hasRole('USER')")
     @PutMapping("/{id}")
     public ResponseEntity<String> update(
             @PathVariable long id,
