@@ -43,7 +43,8 @@
                             readonly />
                     </div>
                 </form>
-                <!-- 로그인 사용자와 포스트 작성자가 같으면 -->
+                
+                <!-- 로그인 사용자와 포스트 작성자가 같을 때만 수정 버튼을 보여줌. -->
                 <div th:if="${ #authentication.name } == ${ post.author }">
                     <a class="btn btn-outline-primary"
                         th:href="@{ /post/modify?id={id} (id = ${post.id}) }">수정하기</a>
@@ -57,6 +58,7 @@
                 <span id="replyCount" th:text="${replyCount}"></span>개
                 <button class="btn btn-outline-dark" id="btnToggleReply">보이기</button>
             </div>
+            <div class="d-none" id="authName" th:text="${ #authentication.name }"></div>
             <div class="card-body collapse" id="replyToggleDiv">
                 <div class="my-2 row">
                     <div class="col-10">

@@ -31,7 +31,9 @@
                             id="author" th:value="${post.author}" readonly />
                     </div>
                 </form>
-                <div>
+                
+                <!-- 로그인 사용자와 포스트 작성자가 같을 때만 삭제, 업데이트 버튼을 보여줌. -->
+                <div th:if="${ #authentication.name } == ${ post.author }">
                     <button class="btn btn-outline-danger" id="btnDelete">삭제</button>
                     <button class="btn btn-outline-success" id="btnUpdate">업데이트</button>
                 </div>
