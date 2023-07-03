@@ -29,6 +29,7 @@ public class SecurityConfig {
     }
     
     // 로그인할 때 사용할 임시 사용자(메모리에 임시 저장) bean 생성
+    /*
     @Bean
     public UserDetailsService inMemoryUserDetailsService() {
         // 사용자 상세 정보
@@ -52,6 +53,7 @@ public class SecurityConfig {
         
         return new InMemoryUserDetailsManager(user1, user2, user3);
     }
+    */
     
     // Security Filter 설정 bean:
     // 로그인/로그아웃 설정
