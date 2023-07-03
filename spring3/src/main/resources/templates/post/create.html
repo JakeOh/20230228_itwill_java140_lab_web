@@ -19,10 +19,10 @@
                         <label class="form-label" for="content">내용</label>
                         <textarea class="form-control" id="content" name="content" required></textarea>
                     </div>
-                    <div class="my-2">
+                    <div class="d-none">
                         <label class="form-label" for="author">작성자</label>
                         <input class="form-control" id="author"
-                            type="text" name="author" required />
+                            type="text" name="author" th:value="${ #authentication.name }" />
                     </div>
                     <div class="my-2">
                         <input class="form-control btn btn-outline-success" 
